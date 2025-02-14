@@ -1,6 +1,5 @@
 <?php
 require 'config.php';
-include("session.php");
 
 
 

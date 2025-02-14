@@ -318,7 +318,7 @@ $result4 = mysqli_query($db, $sql4);
 
 <body>
     <!-- Sidebar -->
-    <?php include 'sidebar.php'; ?>
+    <?php include 'wsidebar.php'; ?>
 
     <!-- Main Content -->
     <div class="content">
