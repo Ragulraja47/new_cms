@@ -129,9 +129,9 @@ if (isset($_POST['facdet'])) {
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
     <title>MIC - MKCE</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="assets/css/tabs.css">
-    <link rel="stylesheet" href="assets/css/Modal.css">
-    <link href="../css/dboardstyles.css" rel="stylesheet">
+    <link rel="stylesheet" href="tabs.css">
+
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
@@ -438,9 +438,8 @@ if (isset($_POST['facdet'])) {
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs" role="tablist" id="navli">
 
-                    
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link" data-bs-toggle="tab" id="edit-bus-tab" href="#home"
+                            <a class="nav-link active" data-bs-toggle="tab" id="edit-bus-tab" href="#home"
                                 role="tab" aria-selected="true">
                                 <span class="hidden-xs-down" style="font-size: 0.9em;">
                                     <i class="fas fa-exclamation-circle tab-icon"></i> &nbsp Complaints (<?php echo $row_count5; ?>)
@@ -496,7 +495,7 @@ if (isset($_POST['facdet'])) {
             <div class="tab-content">
 
                 <!------------------Pending Work Modal----------------->
-                <div class="tab-pane p-3" id="home" role="tabpanel">
+                <div class="tab-pane p-3 active" id="home" role="tabpanel">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card">
@@ -870,7 +869,7 @@ if (isset($_POST['facdet'])) {
                 <div class="modal fade" id="cmodal" tabindex="-1" aria-labelledby="raiseComplaintLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <div class="modal-header" style="background: linear-gradient(to bottom right, #cc66ff 1%, #0033cc 100%);">
+                            <div class="modal-header">
                                 <h5 class="modal-title" id="raiseComplaintLabel">Raise Complaint</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
@@ -948,7 +947,7 @@ if (isset($_POST['facdet'])) {
                 <div class="modal fade" id="extendModal" tabindex="-1" aria-labelledby="extendModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <div class="modal-header" style="background: linear-gradient(to bottom right, #cc66ff 1%, #0033cc 100%);">
+                            <div class="modal-header">
                                 <h5 class="modal-title" id="extendModalLabel">Deadline Extended</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
@@ -972,7 +971,7 @@ if (isset($_POST['facdet'])) {
                 <div class="modal fade" id="workerModal" tabindex="-1" aria-labelledby="workerModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <div class="modal-header" style="background: linear-gradient(to bottom right, #cc66ff 1%, #0033cc 100%);">
+                            <div class="modal-header">
                                 <h5 class="modal-title" id="workerModalLabel">Worker Phone</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
@@ -992,7 +991,7 @@ if (isset($_POST['facdet'])) {
                 <div class="modal fade" id="feedback_modal" tabindex="-1" aria-labelledby="feedbackModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <div class="modal-header" style="background:linear-gradient(to bottom right, #cc66ff 1%, #0033cc 100%); background-color:#7460ee;">
+                            <div class="modal-header" >
                                 <h5 class="modal-title" id="feedbackModalLabel">Feedback Form</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
@@ -1035,7 +1034,7 @@ if (isset($_POST['facdet'])) {
                 <div class="modal fade" id="afterImageModal" tabindex="-1" aria-labelledby="afterImageModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <div class="modal-header" style="background:linear-gradient(to bottom right, #cc66ff 1%, #0033cc 100%); background-color:#7460ee;">
+                            <div class="modal-header">
                                 <h5 class="modal-title" id="afterImageModalLabel">After Image</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
@@ -1053,7 +1052,7 @@ if (isset($_POST['facdet'])) {
                 <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <div class="modal-header" style="background:linear-gradient(to bottom right, #cc66ff 1%, #0033cc 100%); background-color:#7460ee;">
+                            <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">Before Image</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Colorful Bus Management Tabs</title>
+    <link href="tabs.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -160,18 +161,42 @@
         <div class="custom-tabs">
             <!-- Navigation Tabs -->
             <ul class="nav nav-tabs" role="tablist">
+                
                 <li class="nav-item" role="presentation">
                     <button class="nav-link active" id="add-bus-tab" data-bs-toggle="tab" 
                             data-bs-target="#add-bus" type="button" role="tab">
                         <i class="fas fa-bus tab-icon"></i>Add Bus
                     </button>
                 </li>
+
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="edit-bus-tab" data-bs-toggle="tab" 
                             data-bs-target="#edit-bus" type="button" role="tab">
                         <i class="fas fa-edit tab-icon"></i>Edit Bus
                     </button>
                 </li>
+
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="maintenance-bus-tab" data-bs-toggle="tab" 
+                            data-bs-target="#edit-bus" type="button" role="tab">
+                        <i class="fas fa-edit tab-icon"></i>Edit Bus
+                    </button>
+                </li>
+
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="staff-bus-tab" data-bs-toggle="tab" 
+                            data-bs-target="#edit-bus" type="button" role="tab">
+                        <i class="fas fa-edit tab-icon"></i>Edit Bus
+                    </button>
+                </li>
+
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="drivers-bus-tab" data-bs-toggle="tab" 
+                            data-bs-target="#edit-bus" type="button" role="tab">
+                        <i class="fas fa-edit tab-icon"></i>Edit Bus
+                    </button>
+                </li>
+                
             </ul>
 
             <!-- Tab Content -->
