@@ -991,7 +991,7 @@ if (isset($_POST['facdet'])) {
                 <div class="modal fade" id="feedback_modal" tabindex="-1" aria-labelledby="feedbackModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <div class="modal-header" >
+                            <div class="modal-header">
                                 <h5 class="modal-title" id="feedbackModalLabel">Feedback Form</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
