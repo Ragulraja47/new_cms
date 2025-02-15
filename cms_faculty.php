@@ -130,7 +130,7 @@ if (isset($_POST['facdet'])) {
     <title>MIC - MKCE</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="tabs.css">
-
+    <link rel="stylesheet" href="cms_style.css">
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
 
