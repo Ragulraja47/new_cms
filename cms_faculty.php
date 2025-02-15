@@ -56,7 +56,7 @@ if (isset($_POST['nofeedvar'])) {
     }
     $res = [
         "status" => 200,
-        "message" => "value fetched"
+        "message" => "value fetched",
     ];
     echo json_encode($res);
     exit;
