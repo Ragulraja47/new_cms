@@ -11,25 +11,25 @@ $dept = $idept_data['dept'];
 $sql = "
 SELECT cd.*, f.name, f.dept FROM complaints_detail cd
 JOIN faculty f ON cd.faculty_id = f.id
-WHERE cd.status = '1'
+WHERE cd.status = '1'AND f.dept = '$dept'
 ";
 $sql1 = "
 SELECT cd.*, f.name, f.dept
 FROM complaints_detail cd
 JOIN faculty f ON cd.faculty_id = f.id
-WHERE cd.status IN (4, 6, 7, 10, 11, 13, 14, 15, 17, 18, 22) 
+WHERE cd.status IN (4, 6, 7, 10, 11, 13, 14, 15, 17, 18, 22) AND f.dept = '$dept'
 ";
 $sql2 = "
 SELECT cd.*, f.name, f.dept 
 FROM complaints_detail cd
 JOIN faculty f ON cd.faculty_id = f.id
-WHERE cd.status = '16' 
+WHERE cd.status = '16' AND f.dept = '$dept'
     ";
 $sql3 = "
 SELECT cd.*, f.name, f.dept
 FROM complaints_detail cd
 JOIN faculty f ON cd.faculty_id = f.id
-WHERE cd.status IN (19, 20, 23) 
+WHERE cd.status IN (19, 20, 23) AND f.dept = '$dept'
 ";
 $result = mysqli_query($db, $sql);
 $pending = mysqli_num_rows($result);
@@ -59,7 +59,7 @@ $row_count11 = mysqli_num_rows($result11);
     <link rel="icon" type="image/png" sizes="32x32" href="../image/icons/mkce_s.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="tabs.css">
-    <link rel="stylesheet" href="cms_style.css">
+
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
 
