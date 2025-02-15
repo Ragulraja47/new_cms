@@ -12,13 +12,6 @@ $srow  = mysqli_fetch_array($qry_run);
 $dept = $srow['worker_dept'];
 
 
-
-
-
-
-
-
-
 //inprogress query
 $sql1 = "
     SELECT 
