@@ -424,7 +424,7 @@ if (isset($_POST['facdet'])) {
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Research</li>
+                    <li class="breadcrumb-item active" aria-current="page">Complaints</li>
                 </ol>
             </nav>
         </div>
@@ -488,7 +488,7 @@ if (isset($_POST['facdet'])) {
                         </li>
                     </ul>
                 </div>
-            </div>
+            
 
 
             <!--Container for table and modal-->
@@ -862,8 +862,16 @@ if (isset($_POST['facdet'])) {
                     </div>
                 </div>
 
+                </div>
+            </div>
+        </div>
 
-                <!------------------All Modals start----------------->
+
+        <!-- Footer -->
+        <?php include 'footer.php'; ?>
+    </div>
+
+     <!------------------All Modals start----------------->
 
                 <!------------------Raise Complaint Modal----------------->
                 <div class="modal fade" id="cmodal" tabindex="-1" aria-labelledby="raiseComplaintLabel" aria-hidden="true">
@@ -1066,15 +1074,6 @@ if (isset($_POST['facdet'])) {
                     </div>
                 </div>
 
-            </div>
-
-
-        </div>
-
-
-        <!-- Footer -->
-        <?php include 'footer.php'; ?>
-    </div>
 
     <script src="script.js"></script>
     <!-- jQuery -->
