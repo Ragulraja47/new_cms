@@ -426,7 +426,7 @@ $row_count11 = mysqli_num_rows($result11);
                         </a>
                     </li>
                 </ul>
-            </div>
+
                 <!-------------------------dashboard------------------------------>
                 <div class="tab-content">
 
@@ -997,11 +997,12 @@ $row_count11 = mysqli_num_rows($result11);
                     <!-------------------------------Table Ends Here------------------------------->
                 </div>
 
+            </div>
+
         </div>
 
-    </div>
-    <!-- Footer -->
-    <?php include 'footer.php'; ?>
+        <!-- Footer -->
+        <?php include 'footer.php'; ?>
     </div>
 
     <!------------Rejected Feedback modal----->
