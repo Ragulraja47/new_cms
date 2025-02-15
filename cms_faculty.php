@@ -142,7 +142,7 @@ if (isset($_POST['facdet'])) {
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/alertify.min.css" />
     <!-- Bootstrap theme alertify-->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/themes/bootstrap.min.css" />
-    <link href="css/dboardstyles.css" rel="stylesheet">
+
     <style>
         :root {
             --sidebar-width: 250px;
