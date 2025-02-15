@@ -730,8 +730,11 @@ $result4 = mysqli_query($db, $sql4);
                 },
                 success: function(response) {
                     if (response.includes("Success")) {
-                        alert('done');
-                        $('#new_task_table').DataTable().destroy();
+                        Swal.fire({
+                            title: "Accepted!",
+                            text: "Work is Accepted",
+                            icon: "success"
+                        });                        $('#new_task_table').DataTable().destroy();
                         $("#new_task_table").load(location.href + " #new_task_table > *",
                             function() {
                                 $('#new_task_table').DataTable();
