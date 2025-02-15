@@ -11,25 +11,25 @@ $dept = $idept_data['dept'];
 $sql = "
 SELECT cd.*, f.name, f.dept FROM complaints_detail cd
 JOIN faculty f ON cd.faculty_id = f.id
-WHERE cd.status = '1'AND f.dept = '$dept'
+WHERE cd.status = '1'
 ";
 $sql1 = "
 SELECT cd.*, f.name, f.dept
 FROM complaints_detail cd
 JOIN faculty f ON cd.faculty_id = f.id
-WHERE cd.status IN (4, 6, 7, 10, 11, 13, 14, 15, 17, 18, 22) AND f.dept = '$dept'
+WHERE cd.status IN (4, 6, 7, 10, 11, 13, 14, 15, 17, 18, 22) 
 ";
 $sql2 = "
 SELECT cd.*, f.name, f.dept 
 FROM complaints_detail cd
 JOIN faculty f ON cd.faculty_id = f.id
-WHERE cd.status = '16' AND f.dept = '$dept'
+WHERE cd.status = '16' 
     ";
 $sql3 = "
 SELECT cd.*, f.name, f.dept
 FROM complaints_detail cd
 JOIN faculty f ON cd.faculty_id = f.id
-WHERE cd.status IN (19, 20, 23) AND f.dept = '$dept'
+WHERE cd.status IN (19, 20, 23) 
 ";
 $result = mysqli_query($db, $sql);
 $pending = mysqli_num_rows($result);
@@ -1887,15 +1887,7 @@ $row_count11 = mysqli_num_rows($result11);
             });
         });
 
-        alertify.set('notifier', 'position', 'top-right');
-        $(document).ready(function() {
-            $('#myTable1').DataTable();
-            $('#myTable2').DataTable();
-            $('#myTable3').DataTable();
-            $('#myTable4').DataTable();
-            $('#feedbackTable').DataTable();
-
-        });
+        
 
 
         //approve button
