@@ -1,5 +1,6 @@
 <?php
 require 'config.php';
+$fac_id = "1000001";
 
 
 
