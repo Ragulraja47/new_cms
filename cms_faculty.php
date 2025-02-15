@@ -494,6 +494,8 @@ if (isset($_POST['facdet'])) {
             <!--Container for table and modal-->
             <div class="tab-content">
 
+            
+
                 <!------------------Pending Work Modal----------------->
                 <div class="tab-pane p-3 active" id="home" role="tabpanel">
                     <div class="row">
@@ -523,20 +525,36 @@ if (isset($_POST['facdet'])) {
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php
-                                                $s = 1;
-                                                while ($row = mysqli_fetch_assoc($result5)) {
-                                                    $statusMessage = match ($row['status']) {
-                                                        1 => 'Pending',
-                                                        2 => 'Forwarded to Faculty Infra Coordinator',
-                                                        4 => 'Forwarded to Estate Officer',
-                                                        6 => 'Forwarded to Principal',
-                                                        8 => 'Approved by Principal',
-                                                        9 => 'Approved by Manager',
-                                                        22 => 'Forwarded to Manager',
-                                                        default => 'Unknown Status',
-                                                    };
-                                                ?>
+                                            <?php
+                                                                $s = 1;
+                                                                while ($row = mysqli_fetch_assoc($result5)) {
+                                                                    $statusMessage = '';
+                                                                    switch ($row['status']) {
+                                                                        case 1:
+                                                                            $statusMessage = 'Pending';
+                                                                            break;
+                                                                        case 2:
+                                                                            $statusMessage = 'Forwarded to Faculty Infra Coordinator';
+                                                                            break;
+                                                                        case 4:
+                                                                            $statusMessage = 'Forwarded to Estate Officer';
+                                                                            break;
+                                                                        case 6:
+                                                                            $statusMessage = 'Forwarded to Principal';
+                                                                            break;
+                                                                        case 8:
+                                                                            $statusMessage = 'Approved by Principal ';
+                                                                            break;
+                                                                        case 9:
+                                                                            $statusMessage = ' Approved by Manager';
+                                                                            break;
+                                                                        case 22:
+                                                                            $statusMessage = ' Forwarded to Manager';
+                                                                            break;
+                                                                        default:
+                                                                            $statusMessage = 'Unknown Status';
+                                                                    }
+                                                                ?>
                                                     <tr>
                                                         <td class="text-center"><?php echo $s; ?></td>
                                                         <td class="text-center"><?php echo $row['id']; ?></td>
@@ -573,36 +591,6 @@ if (isset($_POST['facdet'])) {
                         </div>
                     </div>
                 </div>
-
-                <?php
-                $s = 1;
-                while ($row = mysqli_fetch_assoc($result5)) {
-                    $statusMessage = '';
-                    switch ($row['status']) {
-                        case 1:
-                            $statusMessage = 'Pending';
-                            break;
-                        case 2:
-                            $statusMessage = 'Approved by Faculty Infra Coordinator';
-                            break;
-                        case 4:
-                            $statusMessage = 'Approved by HOD';
-                            break;
-                        case 6:
-                            $statusMessage = 'Sent to Principal for Approval';
-                            break;
-                        case 8:
-                            $statusMessage = 'Approved by Principal ';
-                            break;
-                        case 9:
-                            $statusMessage = ' Approved by Manager';
-                            break;
-                        default:
-                            $statusMessage = 'Unknown Status';
-                    }
-                }
-                ?>
-
 
                 <!------------------Work in Progress Starts----------------->
                 <div class="tab-pane p-3" id="inprogress" role="tabpanel">
