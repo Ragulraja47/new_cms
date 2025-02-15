@@ -60,18 +60,19 @@ $row_count11 = mysqli_num_rows($result11);
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="tabs.css">
 
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-5/bootstrap-5.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Rubik:wght@300;400;500;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css">
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+
+    <!-- CSS Alertify-->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/alertify.min.css" />
+    <!-- Bootstrap theme alertify-->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/themes/bootstrap.min.css" />
+
+
 
     <style>
         :root {
@@ -804,14 +805,10 @@ $row_count11 = mysqli_num_rows($result11);
         </div>
 
         <!-- Content Area -->
-        <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <form class="zmdi-format-valign-top">
-                        <div class="card-body">
-                            <h4 class="card-title">Complaint Details</h4>
-                            <div class="card">
+
+                            <div class="container-fluid">
                                 <div class="custom-tabs">
+
                                     <ul class="nav nav-tabs" role="tablist">
 
                                         <li class="nav-item" role="presentation">
@@ -870,8 +867,8 @@ $row_count11 = mysqli_num_rows($result11);
                                             </a>
                                         </li>
                                     </ul>
-                                    <!-------------------------dashboard------------------------------>
-                                    <div class="tab-content tabcontent-border">
+
+                                    <div class="tab-content">
                                         <!-------------------------pending tab---------------------------->
                                         <div class="tab-pane p-20 active show" id="pending" role="tabpanel">
                                             <div class="row">
@@ -880,7 +877,7 @@ $row_count11 = mysqli_num_rows($result11);
                                                         <div class="card-header">
                                                             <h4>
                                                                 Raise Complaint
-                                                                <button type="button" class="btn btn-info float-end fac" data-bs-toggle="modal" data-bs-target="#raisemodal">Raise Complant</button>
+                                                                <button type="button" class="btn btn-info float-end fac" data-bs-toggle="modal" data-bs-target="#raisemodal">Raise Complaint</button>
                                                                 <br>
                                                             </h4>
                                                         </div>
@@ -974,7 +971,7 @@ $row_count11 = mysqli_num_rows($result11);
                                                                                     <button type="button"
                                                                                         value="<?php echo $row['id']; ?>"
                                                                                         class="btn btn-info hodApproval"
-                                                                                        data-toggle="modal" data-target="#hod_approval">
+                                                                                        data-bs-toggle="modal" data-bs-target="#hod_approval">
                                                                                         <i class="fas fa-paper-plane"></i>
                                                                                     </button>
                                                                                 </td>
@@ -1421,14 +1418,10 @@ $row_count11 = mysqli_num_rows($result11);
                                         </div>
                                         <!-------------------------------Table Ends Here------------------------------->
                                     </div>
-                                    <!-- dashboard ends here -->
+
                                 </div>
                             </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+                        
         <!-- Footer -->
         <?php include 'footer.php'; ?>
     </div>
@@ -1734,9 +1727,22 @@ $row_count11 = mysqli_num_rows($result11);
 
     <!-- ============================================================== -->
     <!-- All Jquery -->
-    <!-- ============================================================== -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs/build/css/alertify.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/alertifyjs/build/alertify.min.js"></script>
+    <script src="script.js"></script>
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- Datatables -->
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+
+    <!-- Perfect Scrollbar -->
+    <script src="assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+
+
+    <!-- SweetAlert -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <!-- Set Today date in Raise Complaint-->
@@ -1909,7 +1915,13 @@ $row_count11 = mysqli_num_rows($result11);
                     if (res.status == 500) {
                         alertify.error(res.message);
                     } else {
-                        alertify.success('Complaint Approved successfully!');
+                        swal({
+                                title: "success!",
+                                text: "Complaint sent to EO sucessfully!",
+                                icon: "success",
+                                button: "Ok",
+                                timer: null
+                            });
                         $('#myTable1').DataTable().destroy();
                         $('#myTable2').DataTable().destroy();
                         $('#myTable3').DataTable().destroy();
@@ -2192,7 +2204,17 @@ $row_count11 = mysqli_num_rows($result11);
                 success: function(response) {
                     var res = jQuery.parseJSON(response);
                     if (res.status == 200) {
-                        swal("approval sent!", "", "success");
+
+
+                        swal({
+                                title: "success!",
+                                text: "Complaint sent to HOD sucessfully!",
+                                icon: "success",
+                                button: "Ok",
+                                timer: null
+                            });
+
+                        
                         $("#hod_Form")[0].reset();
                         $("#hod_approval").modal('hide');
                         $('#myTable1').load(location.href + " #myTable1");
@@ -2440,7 +2462,6 @@ $row_count11 = mysqli_num_rows($result11);
             });
         });
     </script>
-    <script src="script.js"></script>
 </body>
 
 </html>
