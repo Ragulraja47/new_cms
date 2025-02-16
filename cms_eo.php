@@ -1471,7 +1471,6 @@ $row_count11 = mysqli_num_rows($result11);
             });
         });
 
-        alertify.set('notifier', 'position', 'top-right');
         $(document).ready(function() {
             $('#myTable1').DataTable();
             $('#myTable2').DataTable();
@@ -1582,9 +1581,16 @@ $row_count11 = mysqli_num_rows($result11);
                     console.log(response);
                     var res = jQuery.parseJSON(response);
                     if (res.status == 500) {
-                        alertify.error(res.message);
+                        alert(res.message);
                     } else {
-                        alertify.success('Complaint Approved successfully!');
+                        swal({
+                            title: "success!",
+                            text: "Complaint accepted sucessfully!",
+                            icon: "success",
+                            button: "Ok",
+                            timer: null
+                        });
+
                         $('#myTable1').DataTable().destroy();
                         $('#myTable2').DataTable().destroy();
                         $('#myTable3').DataTable().destroy();
