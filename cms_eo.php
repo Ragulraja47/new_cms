@@ -55,11 +55,13 @@ $row_count11 = mysqli_num_rows($result11);
     <meta name="description" content="">
     <meta name="author" content="">
     <title>MIC</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="../image/mkce_s.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="image/icons/mkce_s.png">
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="cms_style.css">
     <link rel="stylesheet" href="tabs.css">
+    <link rel="stylesheet" href="dboardstyles.css">
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css" rel="stylesheet">
@@ -365,8 +367,15 @@ $row_count11 = mysqli_num_rows($result11);
             <div class="custom-tabs">
                 <ul class="nav nav-tabs" role="tablist">
 
+                    <li class="nav-item active" role="presentation">
+                        <a class="nav-link active" data-bs-toggle="tab" id="add-bus-tab"
+                            href="#dashboard" role="tab" aria-selected="true">
+                            <span class="hidden-xs-down" style="font-size: 0.9em;"><i
+                                    class="fas fa-tachometer-alt tab-icon"></i><b>&nbsp Dashboard</b></span>
+                        </a>
+                    </li>
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link active" data-bs-toggle="tab" id="edit-bus-tab" href="#pending"
+                        <a class="nav-link" data-bs-toggle="tab" id="edit-bus-tab" href="#pending"
                             role="tab" aria-selected="true">
                             <span class="hidden-xs-down" style="font-size: 0.9em;"></span>
                             <div id="navref1">
@@ -427,11 +436,95 @@ $row_count11 = mysqli_num_rows($result11);
                     </li>
                 </ul>
 
-                <!-------------------------dashboard------------------------------>
                 <div class="tab-content">
+                    <!-------------------------dashboard------------------------------>
+                    <div class="tab-pane p-20 active show" id="dashboard" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <!-- <div class="card-header"> -->
+                                <h4 class="card-title m-b-0"><b></b></h4><br>
+
+                                <br>
+                                <div class="row">
+                                    <!-- Pending -->
+                                    <div class="col-12 col-md-3" style="margin-bottom: 40px">
+                                        <div class="cir">
+                                            <div class="bo">
+                                                <div class="content1">
+                                                    <div class="stats-box text-center p-3"
+                                                        style="background-color:orange;">
+                                                        <i class="fas fa-clock"></i>
+                                                        <h1 class="font-light text-white">
+                                                            <?php echo $pending; ?>
+                                                        </h1>
+                                                        <small class="font-light">Pending</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Approved -->
+                                    <div class="col-12 col-md-3">
+                                        <div class="cir">
+                                            <div class="bo">
+                                                <div class="content1">
+                                                    <div class="stats-box text-center p-3"
+                                                        style="background-color:rgb(14, 86, 239);">
+                                                        <i class="fas fa-check"></i>
+                                                        <h1 class="font-light text-white">
+                                                            <?php echo $approved; ?>
+                                                        </h1>
+                                                        <small class="font-light">Approved</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Completed -->
+                                    <div class="col-12 col-md-3">
+                                        <div class="cir">
+                                            <div class="bo">
+                                                <div class="content1">
+                                                    <div class="stats-box text-center p-3"
+                                                        style="background-color:rgb(70, 160, 70);">
+                                                        <i class="fa-solid fa-check-double"></i>
+                                                        <h1 class="font-light text-white">
+                                                            <?php echo $completed; ?>
+                                                        </h1>
+                                                        <small class="font-light">Completed</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Rejected -->
+                                    <div class="col-12 col-md-3">
+                                        <div class="cir">
+                                            <div class="bo">
+                                                <div class="content1">
+                                                    <div class="stats-box text-center p-3"
+                                                        style="background-color:red;">
+                                                        <i class="fa-solid fa-xmark"></i>
+                                                        <h1 class="font-light text-white">
+                                                            <?php echo $rejected;
+                                                            ?>
+                                                        </h1>
+                                                        <small class="font-light">Rejected</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <!-------------------------pending tab---------------------------->
-                    <div class="tab-pane p-20  active show" id="pending" role="tabpanel">
+                    <div class="tab-pane p-20 show" id="pending" role="tabpanel">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="card">
@@ -1510,30 +1603,30 @@ $row_count11 = mysqli_num_rows($result11);
                             $('#rejectmodal').modal('hide');
                             $('#rejectdetails')[0].reset();
                             $('#myTable1').DataTable().destroy();
-                        $('#myTable2').DataTable().destroy();
-                        $('#myTable3').DataTable().destroy();
-                        $('#myTable4').DataTable().destroy();
-                        $('#feedbackTable').DataTable().destroy();
-                        $("#myTable1").load(location.href + " #myTable1 > *", function() {
-                            $('#myTable1').DataTable();
-                        });
-                        $("#myTable2").load(location.href + " #myTable2 > *", function() {
-                            $('#myTable2').DataTable();
-                        });
-                        $("#myTable3").load(location.href + " #myTable3 > *", function() {
-                            $('#myTable3').DataTable();
-                        });
-                        $("#myTable4").load(location.href + " #myTable3 > *", function() {
-                            $('#myTable3').DataTable();
-                        });
-                        $("#feedbackTable").load(location.href + " #feedbackTable > *", function() {
-                            $('#feedbackTable').DataTable();
-                        });
-                        $('#navref1').load(location.href + " #navref1");
-                        $('#navref2').load(location.href + " #navref2");
-                        $('#navref3').load(location.href + " #navref3");
-                        $('#navref33').load(location.href + " #navref3");
-                        $('#navref4').load(location.href + " #navref4");
+                            $('#myTable2').DataTable().destroy();
+                            $('#myTable3').DataTable().destroy();
+                            $('#myTable4').DataTable().destroy();
+                            $('#feedbackTable').DataTable().destroy();
+                            $("#myTable1").load(location.href + " #myTable1 > *", function() {
+                                $('#myTable1').DataTable();
+                            });
+                            $("#myTable2").load(location.href + " #myTable2 > *", function() {
+                                $('#myTable2').DataTable();
+                            });
+                            $("#myTable3").load(location.href + " #myTable3 > *", function() {
+                                $('#myTable3').DataTable();
+                            });
+                            $("#myTable4").load(location.href + " #myTable3 > *", function() {
+                                $('#myTable3').DataTable();
+                            });
+                            $("#feedbackTable").load(location.href + " #feedbackTable > *", function() {
+                                $('#feedbackTable').DataTable();
+                            });
+                            $('#navref1').load(location.href + " #navref1");
+                            $('#navref2').load(location.href + " #navref2");
+                            $('#navref3').load(location.href + " #navref3");
+                            $('#navref33').load(location.href + " #navref3");
+                            $('#navref4').load(location.href + " #navref4");
 
                         } else if (res.status == 500) {
                             alertify.error('Complaint Rejected!');

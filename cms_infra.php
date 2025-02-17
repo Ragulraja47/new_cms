@@ -56,10 +56,10 @@ $row_count11 = mysqli_num_rows($result11);
     <meta name="description" content="">
     <meta name="author" content="">
     <title>MIC</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="../image/icons/mkce_s.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="image/icons/mkce_s.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="tabs.css">
-
+    <link rel="stylesheet" href="dboardstyles.css">
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
 
@@ -806,622 +806,713 @@ $row_count11 = mysqli_num_rows($result11);
 
         <!-- Content Area -->
 
-                            <div class="container-fluid">
-                                <div class="custom-tabs">
+        <div class="container-fluid">
+            <div class="custom-tabs">
 
-                                    <ul class="nav nav-tabs" role="tablist">
+                <ul class="nav nav-tabs" role="tablist">
 
-                                        <li class="nav-item" role="presentation">
-                                            <a class="nav-link active" data-bs-toggle="tab" id="edit-bus-tab" href="#pending" role="tab" aria-selected="true">
-                                                <span class="hidden-xs-down" style="font-size: 0.9em;"></span>
-                                                <div id="navref1">
-                                                    <span class="hidden-xs-down">
+                    <li class="nav-item active" role="presentation">
+                        <a class="nav-link active" data-bs-toggle="tab" id="add-bus-tab"
+                            href="#dashboard" role="tab" aria-selected="true">
+                            <span class="hidden-xs-down" style="font-size: 0.9em;"><i
+                                    class="fas fa-tachometer-alt tab-icon"></i><b>&nbsp Dashboard</b></span>
+                        </a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" data-bs-toggle="tab" id="edit-bus-tab" href="#pending" role="tab" aria-selected="true">
+                            <span class="hidden-xs-down" style="font-size: 0.9em;"></span>
+                            <div id="navref1">
+                                <span class="hidden-xs-down">
+                                    <i class="fas fa-clock"></i>
+                                    &nbsp Pending (<?php echo $pending; ?>)
+                                </span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" data-bs-toggle="tab" id="delete-bus-tab" href="#approved" role="tab" aria-selected="true">
+                            <span class="hidden-xs-down" style="font-size: 0.9em;"></span>
+                            <div id="navref2">
+                                <span class="hidden-xs-down">
+                                    <i class="fas fa-check"></i>
+                                    &nbsp Approved (<?php echo $approved; ?>)
+                                </span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" data-bs-toggle="tab" id="route-bus-tab" href="#completed" role="tab" aria-selected="true">
+                            <span class="hidden-xs-down" style="font-size: 0.9em;"></span>
+                            <div id="navref3">
+                                <span class="hidden-xs-down">
+                                    <i class="fa-solid fa-check-double"></i>
+                                    &nbsp Completed (<?php echo $completed; ?>)
+                                </span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" data-bs-toggle="tab" id="settings-bus-tab" href="#rejected" role="tab" aria-selected="true">
+                            <span class="hidden-xs-down" style="font-size: 0.9em;"></span>
+                            <div id="navref4">
+                                <span class="hidden-xs-down">
+                                    <i class="fa-solid fa-xmark"></i>
+                                    &nbsp Rejected (<?php echo $rejected; ?>)
+                                </span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" data-bs-toggle="tab" id="fleet-management-bus-tab" href="#feedback" role="tab" aria-selected="true">
+                            <span class="hidden-xs-down" style="font-size: 0.9em;"></span>
+                            <div id="navref33">
+                                <span class="hidden-xs-down">
+                                    <i class="fa-solid fa-clipboard"></i>
+                                    &nbsp Feedback (<?php echo $row_count11; ?>)
+                                </span>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+                    <!-- dashboard -->
+                    <div class="tab-pane p-20 active show" id="dashboard" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <!-- <div class="card-header"> -->
+                                <h4 class="card-title m-b-0"><b></b></h4><br>
+
+                                <br>
+                                <div class="row">
+                                    <!-- Pending -->
+                                    <div class="col-12 col-md-3" style="margin-bottom: 40px">
+                                        <div class="cir">
+                                            <div class="bo">
+                                                <div class="content1">
+                                                    <div class="stats-box text-center p-3" style="background-color:orange;">
                                                         <i class="fas fa-clock"></i>
-                                                        &nbsp Pending (<?php echo $pending; ?>)
-                                                    </span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item" role="presentation">
-                                            <a class="nav-link" data-bs-toggle="tab" id="delete-bus-tab" href="#approved" role="tab" aria-selected="true">
-                                                <span class="hidden-xs-down" style="font-size: 0.9em;"></span>
-                                                <div id="navref2">
-                                                    <span class="hidden-xs-down">
-                                                        <i class="fas fa-check"></i>
-                                                        &nbsp Approved (<?php echo $approved; ?>)
-                                                    </span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item" role="presentation">
-                                            <a class="nav-link" data-bs-toggle="tab" id="route-bus-tab" href="#completed" role="tab" aria-selected="true">
-                                                <span class="hidden-xs-down" style="font-size: 0.9em;"></span>
-                                                <div id="navref3">
-                                                    <span class="hidden-xs-down">
-                                                        <i class="fa-solid fa-check-double"></i>
-                                                        &nbsp Completed (<?php echo $completed; ?>)
-                                                    </span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item" role="presentation">
-                                            <a class="nav-link" data-bs-toggle="tab" id="settings-bus-tab" href="#rejected" role="tab" aria-selected="true">
-                                                <span class="hidden-xs-down" style="font-size: 0.9em;"></span>
-                                                <div id="navref4">
-                                                    <span class="hidden-xs-down">
-                                                        <i class="fa-solid fa-xmark"></i>
-                                                        &nbsp Rejected (<?php echo $rejected; ?>)
-                                                    </span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item" role="presentation">
-                                            <a class="nav-link" data-bs-toggle="tab" id="fleet-management-bus-tab" href="#feedback" role="tab" aria-selected="true">
-                                                <span class="hidden-xs-down" style="font-size: 0.9em;"></span>
-                                                <div id="navref33">
-                                                    <span class="hidden-xs-down">
-                                                        <i class="fa-solid fa-clipboard"></i>
-                                                        &nbsp Feedback (<?php echo $row_count11; ?>)
-                                                    </span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                    </ul>
-
-                                    <div class="tab-content">
-                                        <!-------------------------pending tab---------------------------->
-                                        <div class="tab-pane p-20 active show" id="pending" role="tabpanel">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="card">
-                                                        <div class="card-header">
-                                                            <h4>
-                                                                Raise Complaint
-                                                                <button type="button" class="btn btn-info float-end fac" data-bs-toggle="modal" data-bs-target="#raisemodal">Raise Complaint</button>
-                                                                <br>
-                                                            </h4>
-                                                        </div>
-
-                                                        <div class="card-body">
-                                                            <div class="table-responsive">
-                                                                <table id="myTable1" class="table table-bordered table-striped fixed-size-table">
-                                                                    <thead class="gradient-header">
-                                                                        <tr>
-                                                                            <th class="pending status text-center" style="width: 40px;">
-                                                                                <b>S.No</b>
-                                                                            </th>
-                                                                            <th class="text-center" style="width: 80px;">
-                                                                                <b>Date Registered</b>
-                                                                            </th>
-                                                                            <th class="text-center" style="width: 70px;">
-                                                                                <b>Faculty Name</b>
-                                                                            </th>
-                                                                            <th class="text-center">
-                                                                                <b>Problem Description</b>
-                                                                            </th>
-                                                                            <th class="text-center">
-                                                                                <b>Image</b>
-                                                                            </th>
-                                                                            <th class="text-center">
-                                                                                <b>Action</b>
-                                                                            </th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        <?php
-                                                                        $id = 1;
-                                                                        while ($row = mysqli_fetch_assoc($result)) {
-                                                                        ?>
-                                                                            <tr>
-                                                                                <td class="text-center">
-                                                                                    <?php echo $id; ?>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <center>
-                                                                                        <?php echo $row['date_of_reg']; ?>
-                                                                                    </center>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <center>
-                                                                                        <button type="button"
-                                                                                            class="btn btn-link faculty" id="facultyinfo"
-                                                                                            data-value="<?php echo $row['faculty_id']; ?>"
-                                                                                            data-bs-toggle="modal" value="<?php echo $row['id']; ?>"
-                                                                                            data-bs-target="#facultymodal" style="text-decoration:none;"><?php echo $row['name']; ?>
-                                                                                        </button>
-                                                                                    </center>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <center>
-                                                                                        <button type="button"
-                                                                                            data-bs-problemid
-                                                                                            class="btn btndesc" id="seeproblem"
-                                                                                            data-bs-toggle="modal" value='<?php echo $row['id']; ?>'
-                                                                                            data-bs-target="#probdesc">
-                                                                                            <i class="fas fa-solid fa-eye" style="font-size: 20px;"></i>
-                                                                                        </button>
-                                                                                    </center>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <center>
-                                                                                        <button type="button"
-                                                                                            class="btn showImage"
-                                                                                            value="<?php echo $row['id']; ?>"
-                                                                                            data-bs-toggle="modal"
-                                                                                            data-bs-target="#imageModal1"
-                                                                                            data-bs-task-id='<?php echo htmlspecialchars($row['id']); ?>'>
-                                                                                            <i class="fas fa-image" style="font-size: 20px;"></i>
-                                                                                        </button>
-                                                                                    </center>
-                                                                                </td>
-                                                                                <td class="text-center">
-                                                                                    <button type="button"
-                                                                                        value="<?php echo $row['id']; ?>"
-                                                                                        id="detail_id"
-                                                                                        class="btn btn-success btnapprove ">
-                                                                                        <i class="fas fa-check"></i>
-                                                                                    </button>
-                                                                                    <button type="button"
-                                                                                        value="<?php echo $row['id']; ?>"
-                                                                                        class="btn btn-danger btnreject"
-                                                                                        data-bs-toggle="modal"
-                                                                                        data-bs-target="#rejectmodal">
-                                                                                        <i class="fas fa-times"></i>
-                                                                                    </button>
-                                                                                    <button type="button"
-                                                                                        value="<?php echo $row['id']; ?>"
-                                                                                        class="btn btn-info hodApproval"
-                                                                                        data-bs-toggle="modal" data-bs-target="#hod_approval">
-                                                                                        <i class="fas fa-paper-plane"></i>
-                                                                                    </button>
-                                                                                </td>
-                                                                            <?php
-                                                                            $id++;
-                                                                        }
-                                                                            ?>
-                                                                            </tr>
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
-                                                        </div>
+                                                        <h1 class="font-light text-white">
+                                                            <?php echo $pending;
+                                                            ?>
+                                                        </h1>
+                                                        <small class="font-light">Pending</small>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <!--------------approved tab-------------------->
-                                        <div class="tab-pane p-20" id="approved" role="tabpanel">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="card">
-                                                        <div class="card-body">
-                                                            <div class="table-responsive">
-                                                                <table id="myTable2" class="table table-bordered table-striped fixed-size-table">
-                                                                    <thead class="gradient-header">
-                                                                        <tr>
-                                                                            <th class="pending status text-center" style="width: 40px;">
-                                                                                <b>S.No</b>
-                                                                            </th>
-                                                                            <th class="text-center" style="width: 80px;">
-                                                                                <b>Date Registered</b>
-                                                                            </th>
-                                                                            <th class="text-center" style="width: 70px;">
-                                                                                <b>Faculty Name</b>
-                                                                            </th>
-                                                                            <th class="text-center">
-                                                                                <b>Problem Description</b>
-                                                                            </th>
-                                                                            <th class="text-center">
-                                                                                <b>Image</b>
-                                                                            </th>
-                                                                            <th class="text-center">
-                                                                                <b>Status</b>
-                                                                            </th>
-                                                                        </tr>
-                                                                    </thead>
-
-                                                                    <tbody>
-                                                                        <?php
-                                                                        $id = 1;
-                                                                        while ($row = mysqli_fetch_assoc($result1)) {
-                                                                        ?>
-                                                                            <tr>
-                                                                                <td class="text-center">
-                                                                                    <?php echo $id; ?>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <center>
-                                                                                        <?php echo $row['date_of_reg']; ?>
-                                                                                    </center>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <center>
-                                                                                        <button type="button"
-                                                                                            class="btn btn-link faculty" id="facultyinfo"
-                                                                                            data-value="<?php echo $row['faculty_id']; ?>"
-                                                                                            data-bs-toggle="modal" value="<?php echo $row['id']; ?>"
-                                                                                            data-bs-target="#facultymodal" style="text-decoration:none;"><?php echo $row['name']; ?></button>
-                                                                                    </center>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <center>
-                                                                                        <button type="button"
-                                                                                            value='<?php echo $row['id']; ?>'
-                                                                                            class="btn btndesc"
-                                                                                            data-bs-toggle="modal" id="seeproblem"
-                                                                                            data-bs-target="#probdesc">
-                                                                                            <i class="fas fa-solid fa-eye" style="font-size: 20px;"></i>
-                                                                                        </button>
-                                                                                    </center>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <center>
-                                                                                        <button type="button"
-                                                                                            class="btn showImage"
-                                                                                            value="<?php echo $row['id']; ?>"
-                                                                                            data-bs-toggle="modal"
-                                                                                            data-bs-target="#imageModal1"
-                                                                                            data-bs-task-id='<?php echo htmlspecialchars($row['id']); ?>'>
-                                                                                            <i class="fas fa-image" style="font-size: 20px;"></i>
-                                                                                        </button>
-                                                                                    </center>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <center>
-                                                                                        <?php
-                                                                                        $statusMessages = [
-                                                                                            2 => 'Forwarded to HOD',
-                                                                                            4 => 'Forwaded to Estate Officer',
-                                                                                            5 => 'Rejected By HOD',
-                                                                                            6 => 'Sent to principal for approval',
-                                                                                            8 => 'Accepted by Principal',
-                                                                                            9 => 'Approved by Manager',
-                                                                                            10 => 'Approved By Worker',
-                                                                                            11 => 'Waiting for Approval',
-                                                                                            13 => 'Sent to Faculty Infra Coordinator for completion',
-                                                                                            14 => 'Feedback by faculty',
-                                                                                            15 => 'Work is Reassigned',
-                                                                                            16 => 'Work is Completed',
-                                                                                            19 => 'Rejected By Principal',
-                                                                                            20 => 'Rejected by Manager',
-                                                                                            22 => 'Accepted by Estate Officer',
-                                                                                            23 => 'Rejected By Estate Officer',
-                                                                                        ];
-
-                                                                                        $status = $row['status'];
-                                                                                        $statusMessage = $statusMessages[$status] ?? 'Unknown status';
-                                                                                        ?>
-                                                                                        <button type="button" class="btn btn-secondary">
-                                                                                            <?php echo $statusMessage; ?>
-                                                                                        </button>
-                                                                                    </center>
-                                                                                </td>
-                                                                            </tr>
-                                                                        <?php
-                                                                            $id++;
-                                                                        }
-                                                                        ?>
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!------------------Feedback Table----------------->
-                                        <div class="tab-pane p-20" id="feedback" role="tabpanel">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="card">
-                                                        <div class="card-body">
-                                                            <div class="table-responsive">
-                                                                <table id="feedbackTable" class="table table-bordered table-striped">
-                                                                    <thead class="gradient-header">
-                                                                        <tr>
-                                                                            <th class="text-center"><b>S.No</b></th>
-                                                                            <th class="text-center"><b>Problem ID</th>
-                                                                            <th class="text-center"><b>Venue</b></th>
-                                                                            <th class="text-center"><b>Problem description</b></th>
-                                                                            <th class="text-center"><b>Date Of submission</b></th>
-                                                                            <th class="text-center"><b>Deadline</b></th>
-                                                                            <th class="text-center"><b>After Image</b></th>
-                                                                            <th class="text-center"><b>Worker Details</b></th>
-                                                                            <th class="text-center"><b>Feedback</b></th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        <?php
-                                                                        $s = 1;
-                                                                        while ($row = mysqli_fetch_assoc($result11)) {
-                                                                        ?>
-                                                                            <tr>
-                                                                                <td class="text-center"><?php echo $s; ?></td>
-                                                                                <td class="text-center"><?php echo $row['id']; ?></td>
-                                                                                <td class="text-center"><?php echo $row['block_venue']; ?></td>
-                                                                                <td class="text-center"><?php echo $row['problem_description']; ?></td>
-                                                                                <td class="text-center"><?php echo $row['date_of_reg']; ?></td>
-                                                                                <td class="text-center">
-                                                                                    <?php if ($row['extend_date'] == 1) { ?>
-                                                                                        <button type="button" class="btn btn-danger extenddeadline"
-                                                                                            id="extendbutton" value="<?php echo $row['id']; ?>"
-                                                                                            data-bs-toggle="modal"
-                                                                                            data-bs-target="#extendModal"
-                                                                                            data-bs-reason="<?php echo $row['extend_reason']; ?>">
-                                                                                            <?php echo $row['days_to_complete']; ?>
-                                                                                        </button>
-                                                                                    <?php } else { ?>
-                                                                                        <?php echo $row['days_to_complete']; ?>
-                                                                                    <?php } ?>
-                                                                                </td>
-                                                                                <td class="text-center">
-                                                                                    <button type="button"
-                                                                                        value="<?php echo htmlspecialchars($row['id']); ?>"
-                                                                                        class="btn viewafterimgcomp"
-                                                                                        data-bs-toggle="modal"
-                                                                                        data-bs-target="#aftercomp"
-                                                                                        data-bs-imgs-id='<?php echo htmlspecialchars($row['id']); ?>'>
-                                                                                        <i class="fas fa-image" style="font-size: 20px;"></i>
-                                                                                    </button>
-                                                                                </td>
-
-
-                                                                                <td class="text-center">
-                                                                                    <button type="button" class="btn btn-light showWorkerDetails" value="<?php echo $row['id']; ?>">
-                                                                                        <?php
-                                                                                        $prblm_id = $row['id'];
-                                                                                        $querry = "SELECT worker_first_name FROM worker_details WHERE worker_id = ( SELECT worker_dept FROM manager WHERE problem_id = '$prblm_id')";
-                                                                                        $querry_run = mysqli_query($db, $querry);
-                                                                                        $worker_name = mysqli_fetch_array($querry_run);
-                                                                                        if ($worker_name['worker_first_name'] != null) {
-                                                                                            echo $worker_name['worker_first_name'];
-                                                                                        } else {
-                                                                                            echo "NA";
-                                                                                        }
-                                                                                        ?>
-                                                                                    </button>
-                                                                                </td>
-                                                                                <td class="text-center">
-
-                                                                                    <?php
-                                                                                    if ($row['status'] == 14) {
-                                                                                    ?>
-                                                                                        <button class="btn btn-success">Submitted</button>
-
-                                                                                    <?php
-                                                                                    } else {
-                                                                                    ?>
-                                                                                        <!-- Button to open the feedback modal -->
-                                                                                        <button type="button" class="btn btn-info feedbackBtn" data-bs-problem-id="<?php echo $row['id']; ?>" data-bs-toggle="modal" data-bs-target="#feedback_modal">Feedback</button>
-
-                                                                                    <?php
-                                                                                    }
-                                                                                    ?>
-
-                                                                                </td>
-                                                                            </tr>
-                                                                        <?php
-                                                                            $s++;
-                                                                        }
-                                                                        ?>
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-
-                                        <!-----------completed tab----------->
-                                        <div class="tab-pane p-20" id="completed" role="tabpanel">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="card">
-                                                        <div class="card-body">
-                                                            <div class="table-responsive">
-                                                                <table id="myTable3" class="table table-bordered table-striped fixed-size-table">
-                                                                    <thead class="gradient-header">
-                                                                        <tr>
-                                                                            <th class="pending status text-center" style="width: 40px;">
-                                                                                <b>S.No</b>
-                                                                            </th>
-                                                                            <th class="text-center" style="width: 80px;">
-                                                                                <b>Date Registered</b>
-                                                                            </th>
-                                                                            <th class="text-center" style="width: 70px;">
-                                                                                <b>Faculty Name</b>
-                                                                            </th>
-                                                                            <th class="text-center">
-                                                                                <b>Problem Description</b>
-                                                                            </th>
-                                                                            <th class="text-center">
-                                                                                <b>Before Image</b>
-                                                                            </th>
-                                                                            <th class="text-center">
-                                                                                <b>After Image</b>
-                                                                            </th>
-
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        <?php
-                                                                        $id = 1;
-                                                                        while ($row = mysqli_fetch_assoc($result2)) {
-                                                                        ?>
-                                                                            <tr>
-                                                                                <td class="text-center">
-                                                                                    <?php echo $id; ?>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <center>
-                                                                                        <?php echo $row['date_of_reg']; ?>
-                                                                                    </center>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <center>
-                                                                                        <button type="button"
-                                                                                            class="btn btn-link faculty" id="facultyinfo"
-                                                                                            data-value="<?php echo $row['fac_id']; ?>"
-                                                                                            data-bs-toggle="modal" value="<?php echo $row['id']; ?>"
-                                                                                            data-bs-target="#facultymodal" style="text-decoration:none;"><?php echo $row['name']; ?></button>
-                                                                                    </center>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <center>
-                                                                                        <button type="button"
-                                                                                            value="<?php echo $row['id']; ?>"
-                                                                                            class="btn btndesc"
-                                                                                            data-bs-toggle="modal" id="seeproblem"
-                                                                                            data-bs-target="#probdesc">
-                                                                                            <i class="fas fa-solid fa-eye" style="font-size: 20px;"></i>
-                                                                                        </button>
-                                                                                    </center>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <center>
-                                                                                        <button type="button"
-                                                                                            class="btn showImage"
-                                                                                            value="<?php echo $row['id']; ?>"
-                                                                                            data-bs-toggle="modal"
-                                                                                            data-bs-target="#imageModal1"
-                                                                                            data-bs-task-id='<?php echo htmlspecialchars($row['id']); ?>'>
-                                                                                            <i class="fas fa-image" style="font-size: 20px;"></i>
-                                                                                        </button>
-                                                                                    </center>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <center>
-                                                                                        <button type="button"
-                                                                                            value="<?php echo htmlspecialchars($row['id']); ?>"
-                                                                                            class="btn viewafterimgcomp"
-                                                                                            data-bs-toggle="modal"
-                                                                                            data-bs-target="#aftercomp"
-                                                                                            data-bs-imgs-id='<?php echo htmlspecialchars($row['id']); ?>'>
-                                                                                            <i class="fas fa-image" style="font-size: 20px;"></i>
-                                                                                        </button>
-                                                                                    </center>
-                                                                                </td>
-
-                                                                            </tr>
-                                                                        <?php
-                                                                            $id++;
-                                                                        }
-                                                                        ?>
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!----------rejected tab------->
-                                        <div class="tab-pane p-20" id="rejected" role="tabpanel">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="card">
-                                                        <div class="card-body">
-                                                            <div class="table-responsive">
-                                                                <table id="myTable4" class="table table-bordered table-striped fixed-size-table">
-                                                                    <thead class="gradient-header">
-                                                                        <tr>
-                                                                            <th class="pending status text-center" style="width: 40px;">
-                                                                                <b>S.No</b>
-                                                                            </th>
-                                                                            <th class="text-center" style="width: 80px;">
-                                                                                <b>Date Registered</b>
-                                                                            </th>
-                                                                            <th class="text-center" style="width: 70px;">
-                                                                                <b>Faculty Name</b>
-                                                                            </th>
-                                                                            <th class="text-center">
-                                                                                <b>Problem Description</b>
-                                                                            </th>
-                                                                            <th class="text-center">
-                                                                                <b>Image</b>
-                                                                            </th>
-                                                                            <th class="text-center">
-                                                                                <b>Reason</b>
-                                                                            </th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        <?php
-                                                                        $id = 1;
-                                                                        while ($row = mysqli_fetch_assoc($result3)) {
-                                                                        ?>
-                                                                            <tr>
-                                                                                <td class="text-center">
-                                                                                    <?php echo $id; ?>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <center>
-                                                                                        <?php echo $row['date_of_reg']; ?>
-                                                                                    </center>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <center>
-                                                                                        <button type="button"
-                                                                                            class="btn btn-link faculty" id="facultyinfo"
-                                                                                            data-value="<?php echo $row['fac_id']; ?>"
-                                                                                            data-bs-toggle="modal" value="<?php echo $row['id']; ?>"
-                                                                                            data-bs-target="#facultymodal" style="text-decoration:none;"><?php echo $row['name']; ?></button>
-                                                                                    </center>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <center>
-                                                                                        <button type="button"
-                                                                                            value="<?php echo $row['id']; ?>"
-                                                                                            class="btn btndesc"
-                                                                                            data-bs-toggle="modal" id="seeproblem"
-                                                                                            data-bs-target="#probdesc">
-                                                                                            <i class="fas fa-solid fa-eye" style="font-size: 20px;"></i>
-                                                                                        </button>
-                                                                                    </center>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <center>
-                                                                                        <button type="button"
-                                                                                            value="<?php echo $row['id']; ?>"
-                                                                                            class="btn showImage"
-                                                                                            data-bs-toggle="modal"
-                                                                                            data-bs-target="#imageModal1"
-                                                                                            data-bs-task-id='<?php echo htmlspecialchars($row['id']); ?>'>
-                                                                                            <i class="fas fa-image" style="font-size: 20px;"></i>
-                                                                                        </button>
-                                                                                    </center>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <center>
-                                                                                        <button type="button" value="<?php echo $row['id']; ?>" class="btn btn-danger btnrejfeed" data-bs-toggle="modal"
-                                                                                            data-bs-target="#problemrejected" id="rejectedfeedback">
-                                                                                            <i class="fas fa-solid fa-comment" style="font-size: 20px; width:40px;"></i>
-                                                                                        </button>
-                                                                                    </center>
-                                                                                </td>
-                                                                            </tr>
-                                                                        <?php
-                                                                            $id++;
-                                                                        }
-                                                                        ?>
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-------------------------------Table Ends Here------------------------------->
                                     </div>
 
+                                    <!-- Approved -->
+                                    <div class="col-12 col-md-3">
+                                        <div class="cir">
+                                            <div class="bo">
+                                                <div class="content1">
+                                                    <div class="stats-box text-center p-3" style="background-color:rgb(14, 86, 239);">
+                                                        <i class="fas fa-check"></i>
+                                                        <h1 class="font-light text-white">
+                                                            <?php echo $approved;
+                                                            ?>
+                                                        </h1>
+                                                        <small class="font-light">Approved</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Completed -->
+                                    <div class="col-12 col-md-3">
+                                        <div class="cir">
+                                            <div class="bo">
+                                                <div class="content1">
+                                                    <div class="stats-box text-center p-3" style="background-color:rgb(70, 160, 70);">
+                                                        <i class="fa-solid fa-check-double"></i>
+                                                        <h1 class="font-light text-white">
+                                                            <?php echo $completed;
+                                                            ?>
+                                                        </h1>
+                                                        <small class="font-light">Completed</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Rejected -->
+                                    <div class="col-12 col-md-3">
+                                        <div class="cir">
+                                            <div class="bo">
+                                                <div class="content1">
+                                                    <div class="stats-box text-center p-3" style="background-color:red;">
+                                                        <i class="fa-solid fa-xmark"></i>
+                                                        <h1 class="font-light text-white">
+                                                            <?php echo $rejected;
+                                                            ?>
+                                                        </h1>
+                                                        <small class="font-light">Rejected</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        
+                        </div>
+                    </div>
+                    <!-------------------------pending tab---------------------------->
+                    <div class="tab-pane p-20 show" id="pending" role="tabpanel">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4>
+                                            Raise Complaint
+                                            <button type="button" class="btn btn-info float-end fac" data-bs-toggle="modal" data-bs-target="#raisemodal">Raise Complaint</button>
+                                            <br>
+                                        </h4>
+                                    </div>
+
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table id="myTable1" class="table table-bordered table-striped fixed-size-table">
+                                                <thead class="gradient-header">
+                                                    <tr>
+                                                        <th class="pending status text-center" style="width: 40px;">
+                                                            <b>S.No</b>
+                                                        </th>
+                                                        <th class="text-center" style="width: 80px;">
+                                                            <b>Date Registered</b>
+                                                        </th>
+                                                        <th class="text-center" style="width: 70px;">
+                                                            <b>Faculty Name</b>
+                                                        </th>
+                                                        <th class="text-center">
+                                                            <b>Problem Description</b>
+                                                        </th>
+                                                        <th class="text-center">
+                                                            <b>Image</b>
+                                                        </th>
+                                                        <th class="text-center">
+                                                            <b>Action</b>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php
+                                                    $id = 1;
+                                                    while ($row = mysqli_fetch_assoc($result)) {
+                                                    ?>
+                                                        <tr>
+                                                            <td class="text-center">
+                                                                <?php echo $id; ?>
+                                                            </td>
+                                                            <td>
+                                                                <center>
+                                                                    <?php echo $row['date_of_reg']; ?>
+                                                                </center>
+                                                            </td>
+                                                            <td>
+                                                                <center>
+                                                                    <button type="button"
+                                                                        class="btn btn-link faculty" id="facultyinfo"
+                                                                        data-value="<?php echo $row['faculty_id']; ?>"
+                                                                        data-bs-toggle="modal" value="<?php echo $row['id']; ?>"
+                                                                        data-bs-target="#facultymodal" style="text-decoration:none;"><?php echo $row['name']; ?>
+                                                                    </button>
+                                                                </center>
+                                                            </td>
+                                                            <td>
+                                                                <center>
+                                                                    <button type="button"
+                                                                        data-bs-problemid
+                                                                        class="btn btndesc" id="seeproblem"
+                                                                        data-bs-toggle="modal" value='<?php echo $row['id']; ?>'
+                                                                        data-bs-target="#probdesc">
+                                                                        <i class="fas fa-solid fa-eye" style="font-size: 20px;"></i>
+                                                                    </button>
+                                                                </center>
+                                                            </td>
+                                                            <td>
+                                                                <center>
+                                                                    <button type="button"
+                                                                        class="btn showImage"
+                                                                        value="<?php echo $row['id']; ?>"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#imageModal1"
+                                                                        data-bs-task-id='<?php echo htmlspecialchars($row['id']); ?>'>
+                                                                        <i class="fas fa-image" style="font-size: 20px;"></i>
+                                                                    </button>
+                                                                </center>
+                                                            </td>
+                                                            <td class="text-center">
+                                                                <button type="button"
+                                                                    value="<?php echo $row['id']; ?>"
+                                                                    id="detail_id"
+                                                                    class="btn btn-success btnapprove ">
+                                                                    <i class="fas fa-check"></i>
+                                                                </button>
+                                                                <button type="button"
+                                                                    value="<?php echo $row['id']; ?>"
+                                                                    class="btn btn-danger btnreject"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#rejectmodal">
+                                                                    <i class="fas fa-times"></i>
+                                                                </button>
+                                                                <button type="button"
+                                                                    value="<?php echo $row['id']; ?>"
+                                                                    class="btn btn-info hodApproval"
+                                                                    data-bs-toggle="modal" data-bs-target="#hod_approval">
+                                                                    <i class="fas fa-paper-plane"></i>
+                                                                </button>
+                                                            </td>
+                                                        <?php
+                                                        $id++;
+                                                    }
+                                                        ?>
+                                                        </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--------------approved tab-------------------->
+                    <div class="tab-pane p-20" id="approved" role="tabpanel">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table id="myTable2" class="table table-bordered table-striped fixed-size-table">
+                                                <thead class="gradient-header">
+                                                    <tr>
+                                                        <th class="pending status text-center" style="width: 40px;">
+                                                            <b>S.No</b>
+                                                        </th>
+                                                        <th class="text-center" style="width: 80px;">
+                                                            <b>Date Registered</b>
+                                                        </th>
+                                                        <th class="text-center" style="width: 70px;">
+                                                            <b>Faculty Name</b>
+                                                        </th>
+                                                        <th class="text-center">
+                                                            <b>Problem Description</b>
+                                                        </th>
+                                                        <th class="text-center">
+                                                            <b>Image</b>
+                                                        </th>
+                                                        <th class="text-center">
+                                                            <b>Status</b>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                    <?php
+                                                    $id = 1;
+                                                    while ($row = mysqli_fetch_assoc($result1)) {
+                                                    ?>
+                                                        <tr>
+                                                            <td class="text-center">
+                                                                <?php echo $id; ?>
+                                                            </td>
+                                                            <td>
+                                                                <center>
+                                                                    <?php echo $row['date_of_reg']; ?>
+                                                                </center>
+                                                            </td>
+                                                            <td>
+                                                                <center>
+                                                                    <button type="button"
+                                                                        class="btn btn-link faculty" id="facultyinfo"
+                                                                        data-value="<?php echo $row['faculty_id']; ?>"
+                                                                        data-bs-toggle="modal" value="<?php echo $row['id']; ?>"
+                                                                        data-bs-target="#facultymodal" style="text-decoration:none;"><?php echo $row['name']; ?></button>
+                                                                </center>
+                                                            </td>
+                                                            <td>
+                                                                <center>
+                                                                    <button type="button"
+                                                                        value='<?php echo $row['id']; ?>'
+                                                                        class="btn btndesc"
+                                                                        data-bs-toggle="modal" id="seeproblem"
+                                                                        data-bs-target="#probdesc">
+                                                                        <i class="fas fa-solid fa-eye" style="font-size: 20px;"></i>
+                                                                    </button>
+                                                                </center>
+                                                            </td>
+                                                            <td>
+                                                                <center>
+                                                                    <button type="button"
+                                                                        class="btn showImage"
+                                                                        value="<?php echo $row['id']; ?>"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#imageModal1"
+                                                                        data-bs-task-id='<?php echo htmlspecialchars($row['id']); ?>'>
+                                                                        <i class="fas fa-image" style="font-size: 20px;"></i>
+                                                                    </button>
+                                                                </center>
+                                                            </td>
+                                                            <td>
+                                                                <center>
+                                                                    <?php
+                                                                    $statusMessages = [
+                                                                        2 => 'Forwarded to HOD',
+                                                                        4 => 'Forwaded to Estate Officer',
+                                                                        5 => 'Rejected By HOD',
+                                                                        6 => 'Sent to principal for approval',
+                                                                        8 => 'Accepted by Principal',
+                                                                        9 => 'Approved by Manager',
+                                                                        10 => 'Approved By Worker',
+                                                                        11 => 'Waiting for Approval',
+                                                                        13 => 'Sent to Faculty Infra Coordinator for completion',
+                                                                        14 => 'Feedback by faculty',
+                                                                        15 => 'Work is Reassigned',
+                                                                        16 => 'Work is Completed',
+                                                                        19 => 'Rejected By Principal',
+                                                                        20 => 'Rejected by Manager',
+                                                                        22 => 'Accepted by Estate Officer',
+                                                                        23 => 'Rejected By Estate Officer',
+                                                                    ];
+
+                                                                    $status = $row['status'];
+                                                                    $statusMessage = $statusMessages[$status] ?? 'Unknown status';
+                                                                    ?>
+                                                                    <button type="button" class="btn btn-secondary">
+                                                                        <?php echo $statusMessage; ?>
+                                                                    </button>
+                                                                </center>
+                                                            </td>
+                                                        </tr>
+                                                    <?php
+                                                        $id++;
+                                                    }
+                                                    ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!------------------Feedback Table----------------->
+                    <div class="tab-pane p-20" id="feedback" role="tabpanel">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table id="feedbackTable" class="table table-bordered table-striped">
+                                                <thead class="gradient-header">
+                                                    <tr>
+                                                        <th class="text-center"><b>S.No</b></th>
+                                                        <th class="text-center"><b>Problem ID</th>
+                                                        <th class="text-center"><b>Venue</b></th>
+                                                        <th class="text-center"><b>Problem description</b></th>
+                                                        <th class="text-center"><b>Date Of submission</b></th>
+                                                        <th class="text-center"><b>Deadline</b></th>
+                                                        <th class="text-center"><b>After Image</b></th>
+                                                        <th class="text-center"><b>Worker Details</b></th>
+                                                        <th class="text-center"><b>Feedback</b></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php
+                                                    $s = 1;
+                                                    while ($row = mysqli_fetch_assoc($result11)) {
+                                                    ?>
+                                                        <tr>
+                                                            <td class="text-center"><?php echo $s; ?></td>
+                                                            <td class="text-center"><?php echo $row['id']; ?></td>
+                                                            <td class="text-center"><?php echo $row['block_venue']; ?></td>
+                                                            <td class="text-center"><?php echo $row['problem_description']; ?></td>
+                                                            <td class="text-center"><?php echo $row['date_of_reg']; ?></td>
+                                                            <td class="text-center">
+                                                                <?php if ($row['extend_date'] == 1) { ?>
+                                                                    <button type="button" class="btn btn-danger extenddeadline"
+                                                                        id="extendbutton" value="<?php echo $row['id']; ?>"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#extendModal"
+                                                                        data-bs-reason="<?php echo $row['extend_reason']; ?>">
+                                                                        <?php echo $row['days_to_complete']; ?>
+                                                                    </button>
+                                                                <?php } else { ?>
+                                                                    <?php echo $row['days_to_complete']; ?>
+                                                                <?php } ?>
+                                                            </td>
+                                                            <td class="text-center">
+                                                                <button type="button"
+                                                                    value="<?php echo htmlspecialchars($row['id']); ?>"
+                                                                    class="btn viewafterimgcomp"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#aftercomp"
+                                                                    data-bs-imgs-id='<?php echo htmlspecialchars($row['id']); ?>'>
+                                                                    <i class="fas fa-image" style="font-size: 20px;"></i>
+                                                                </button>
+                                                            </td>
+
+
+                                                            <td class="text-center">
+                                                                <button type="button" class="btn btn-light showWorkerDetails" value="<?php echo $row['id']; ?>">
+                                                                    <?php
+                                                                    $prblm_id = $row['id'];
+                                                                    $querry = "SELECT worker_first_name FROM worker_details WHERE worker_id = ( SELECT worker_dept FROM manager WHERE problem_id = '$prblm_id')";
+                                                                    $querry_run = mysqli_query($db, $querry);
+                                                                    $worker_name = mysqli_fetch_array($querry_run);
+                                                                    if ($worker_name['worker_first_name'] != null) {
+                                                                        echo $worker_name['worker_first_name'];
+                                                                    } else {
+                                                                        echo "NA";
+                                                                    }
+                                                                    ?>
+                                                                </button>
+                                                            </td>
+                                                            <td class="text-center">
+
+                                                                <?php
+                                                                if ($row['status'] == 14) {
+                                                                ?>
+                                                                    <button class="btn btn-success">Submitted</button>
+
+                                                                <?php
+                                                                } else {
+                                                                ?>
+                                                                    <!-- Button to open the feedback modal -->
+                                                                    <button type="button" class="btn btn-info feedbackBtn" data-bs-problem-id="<?php echo $row['id']; ?>" data-bs-toggle="modal" data-bs-target="#feedback_modal">Feedback</button>
+
+                                                                <?php
+                                                                }
+                                                                ?>
+
+                                                            </td>
+                                                        </tr>
+                                                    <?php
+                                                        $s++;
+                                                    }
+                                                    ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <!-----------completed tab----------->
+                    <div class="tab-pane p-20" id="completed" role="tabpanel">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table id="myTable3" class="table table-bordered table-striped fixed-size-table">
+                                                <thead class="gradient-header">
+                                                    <tr>
+                                                        <th class="pending status text-center" style="width: 40px;">
+                                                            <b>S.No</b>
+                                                        </th>
+                                                        <th class="text-center" style="width: 80px;">
+                                                            <b>Date Registered</b>
+                                                        </th>
+                                                        <th class="text-center" style="width: 70px;">
+                                                            <b>Faculty Name</b>
+                                                        </th>
+                                                        <th class="text-center">
+                                                            <b>Problem Description</b>
+                                                        </th>
+                                                        <th class="text-center">
+                                                            <b>Before Image</b>
+                                                        </th>
+                                                        <th class="text-center">
+                                                            <b>After Image</b>
+                                                        </th>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php
+                                                    $id = 1;
+                                                    while ($row = mysqli_fetch_assoc($result2)) {
+                                                    ?>
+                                                        <tr>
+                                                            <td class="text-center">
+                                                                <?php echo $id; ?>
+                                                            </td>
+                                                            <td>
+                                                                <center>
+                                                                    <?php echo $row['date_of_reg']; ?>
+                                                                </center>
+                                                            </td>
+                                                            <td>
+                                                                <center>
+                                                                    <button type="button"
+                                                                        class="btn btn-link faculty" id="facultyinfo"
+                                                                        data-value="<?php echo $row['fac_id']; ?>"
+                                                                        data-bs-toggle="modal" value="<?php echo $row['id']; ?>"
+                                                                        data-bs-target="#facultymodal" style="text-decoration:none;"><?php echo $row['name']; ?></button>
+                                                                </center>
+                                                            </td>
+                                                            <td>
+                                                                <center>
+                                                                    <button type="button"
+                                                                        value="<?php echo $row['id']; ?>"
+                                                                        class="btn btndesc"
+                                                                        data-bs-toggle="modal" id="seeproblem"
+                                                                        data-bs-target="#probdesc">
+                                                                        <i class="fas fa-solid fa-eye" style="font-size: 20px;"></i>
+                                                                    </button>
+                                                                </center>
+                                                            </td>
+                                                            <td>
+                                                                <center>
+                                                                    <button type="button"
+                                                                        class="btn showImage"
+                                                                        value="<?php echo $row['id']; ?>"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#imageModal1"
+                                                                        data-bs-task-id='<?php echo htmlspecialchars($row['id']); ?>'>
+                                                                        <i class="fas fa-image" style="font-size: 20px;"></i>
+                                                                    </button>
+                                                                </center>
+                                                            </td>
+                                                            <td>
+                                                                <center>
+                                                                    <button type="button"
+                                                                        value="<?php echo htmlspecialchars($row['id']); ?>"
+                                                                        class="btn viewafterimgcomp"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#aftercomp"
+                                                                        data-bs-imgs-id='<?php echo htmlspecialchars($row['id']); ?>'>
+                                                                        <i class="fas fa-image" style="font-size: 20px;"></i>
+                                                                    </button>
+                                                                </center>
+                                                            </td>
+
+                                                        </tr>
+                                                    <?php
+                                                        $id++;
+                                                    }
+                                                    ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!----------rejected tab------->
+                    <div class="tab-pane p-20" id="rejected" role="tabpanel">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table id="myTable4" class="table table-bordered table-striped fixed-size-table">
+                                                <thead class="gradient-header">
+                                                    <tr>
+                                                        <th class="pending status text-center" style="width: 40px;">
+                                                            <b>S.No</b>
+                                                        </th>
+                                                        <th class="text-center" style="width: 80px;">
+                                                            <b>Date Registered</b>
+                                                        </th>
+                                                        <th class="text-center" style="width: 70px;">
+                                                            <b>Faculty Name</b>
+                                                        </th>
+                                                        <th class="text-center">
+                                                            <b>Problem Description</b>
+                                                        </th>
+                                                        <th class="text-center">
+                                                            <b>Image</b>
+                                                        </th>
+                                                        <th class="text-center">
+                                                            <b>Reason</b>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php
+                                                    $id = 1;
+                                                    while ($row = mysqli_fetch_assoc($result3)) {
+                                                    ?>
+                                                        <tr>
+                                                            <td class="text-center">
+                                                                <?php echo $id; ?>
+                                                            </td>
+                                                            <td>
+                                                                <center>
+                                                                    <?php echo $row['date_of_reg']; ?>
+                                                                </center>
+                                                            </td>
+                                                            <td>
+                                                                <center>
+                                                                    <button type="button"
+                                                                        class="btn btn-link faculty" id="facultyinfo"
+                                                                        data-value="<?php echo $row['fac_id']; ?>"
+                                                                        data-bs-toggle="modal" value="<?php echo $row['id']; ?>"
+                                                                        data-bs-target="#facultymodal" style="text-decoration:none;"><?php echo $row['name']; ?></button>
+                                                                </center>
+                                                            </td>
+                                                            <td>
+                                                                <center>
+                                                                    <button type="button"
+                                                                        value="<?php echo $row['id']; ?>"
+                                                                        class="btn btndesc"
+                                                                        data-bs-toggle="modal" id="seeproblem"
+                                                                        data-bs-target="#probdesc">
+                                                                        <i class="fas fa-solid fa-eye" style="font-size: 20px;"></i>
+                                                                    </button>
+                                                                </center>
+                                                            </td>
+                                                            <td>
+                                                                <center>
+                                                                    <button type="button"
+                                                                        value="<?php echo $row['id']; ?>"
+                                                                        class="btn showImage"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#imageModal1"
+                                                                        data-bs-task-id='<?php echo htmlspecialchars($row['id']); ?>'>
+                                                                        <i class="fas fa-image" style="font-size: 20px;"></i>
+                                                                    </button>
+                                                                </center>
+                                                            </td>
+                                                            <td>
+                                                                <center>
+                                                                    <button type="button" value="<?php echo $row['id']; ?>" class="btn btn-danger btnrejfeed" data-bs-toggle="modal"
+                                                                        data-bs-target="#problemrejected" id="rejectedfeedback">
+                                                                        <i class="fas fa-solid fa-comment" style="font-size: 20px; width:40px;"></i>
+                                                                    </button>
+                                                                </center>
+                                                            </td>
+                                                        </tr>
+                                                    <?php
+                                                        $id++;
+                                                    }
+                                                    ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-------------------------------Table Ends Here------------------------------->
+                </div>
+
+            </div>
+        </div>
+
         <!-- Footer -->
         <?php include 'footer.php'; ?>
     </div>
@@ -1457,7 +1548,7 @@ $row_count11 = mysqli_num_rows($result11);
     <div class="modal fade" id="workerModal" tabindex="-1" aria-labelledby="workerModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header" style="background:linear-gradient(to bottom right, #cc66ff 1%, #0033cc 100%);background-color:#7460ee;">
+                <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Worker Phone</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                         aria-label="Close"></button>
@@ -1474,8 +1565,8 @@ $row_count11 = mysqli_num_rows($result11);
         </div>
     </div>
 
-     <!-- Raise Complaint -->
-     <div class="modal fade" id="raisemodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- Raise Complaint -->
+    <div class="modal fade" id="raisemodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -1549,13 +1640,12 @@ $row_count11 = mysqli_num_rows($result11);
         aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header"
-                    style="background: linear-gradient(to bottom right, #cc66ff 1%, #0033cc 100%); color: white;">
+                <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Faculty Information</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                         aria-label="Close"></button>
                 </div>
-                <div class="modal-body" >
+                <div class="modal-body">
                     <ol class="list-group list-group-numbered" style="margin-bottom: 0;">
                         <li class="list-group-item d-flex justify-content-between align-items-start" style="padding: 10px; background-color: #fff;">
                             <div class="ms-2 me-auto">
@@ -1591,14 +1681,14 @@ $row_count11 = mysqli_num_rows($result11);
         aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header" style="background: linear-gradient(to bottom right, #cc66ff 1%, #0033cc 100%); color: white;">
+                <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">
                         Problem Description</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                         aria-label="Close"></button>
                 </div>
                 <form id="addnewdetails">
-                    <div class="modal-body" >
+                    <div class="modal-body">
                         <ol class="list-group list-group-numbered" style="margin-bottom: 0;">
                             <li class="list-group-item d-flex justify-content-between align-items-start" style="padding: 10px; background-color: #fff;">
                                 <div class="ms-2 me-auto">
@@ -1700,7 +1790,7 @@ $row_count11 = mysqli_num_rows($result11);
         aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header" style="background: linear-gradient(to bottom right, #cc66ff 1%, #0033cc 100%); color: white;">
+                <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">
                         Before Image</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -1720,7 +1810,7 @@ $row_count11 = mysqli_num_rows($result11);
     <div class="modal fade" id="feedback_modal" tabindex="-1" aria-labelledby="feedbackModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header" style="background:linear-gradient(to bottom right, #cc66ff 1%, #0033cc 100%);background-color:#7460ee;">
+                <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Feedback Form</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                         aria-label="Close"></button>
@@ -1764,7 +1854,7 @@ $row_count11 = mysqli_num_rows($result11);
     <div class="modal fade" id="problemrejected" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header" style="background: linear-gradient(to bottom right, #cc66ff 1%, #0033cc 100%); color: white;">
+                <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Reason for Rejection</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                         aria-label="Close"></button>
@@ -1957,7 +2047,7 @@ $row_count11 = mysqli_num_rows($result11);
             });
         });
 
-        
+
 
 
         //approve button
@@ -1978,12 +2068,12 @@ $row_count11 = mysqli_num_rows($result11);
                         alertify.error(res.message);
                     } else {
                         swal({
-                                title: "success!",
-                                text: "Complaint sent to EO sucessfully!",
-                                icon: "success",
-                                button: "Ok",
-                                timer: null
-                            });
+                            title: "success!",
+                            text: "Complaint sent to EO sucessfully!",
+                            icon: "success",
+                            button: "Ok",
+                            timer: null
+                        });
                         $('#myTable1').DataTable().destroy();
                         $('#myTable2').DataTable().destroy();
                         $('#myTable3').DataTable().destroy();
@@ -2294,15 +2384,15 @@ $row_count11 = mysqli_num_rows($result11);
 
 
                         swal({
-                                title: "success!",
-                                text: "Complaint sent to HOD sucessfully!",
-                                icon: "success",
-                                button: "Ok",
-                                timer: null
-                            });
+                            title: "success!",
+                            text: "Complaint sent to HOD sucessfully!",
+                            icon: "success",
+                            button: "Ok",
+                            timer: null
+                        });
 
-                        
-                            $('#myTable1').DataTable().destroy();
+
+                        $('#myTable1').DataTable().destroy();
                         $('#myTable2').DataTable().destroy();
                         $('#myTable3').DataTable().destroy();
                         $('#myTable4').DataTable().destroy();
@@ -2374,30 +2464,30 @@ $row_count11 = mysqli_num_rows($result11);
                             $('#rejectmodal').modal('hide');
                             $('.rejectdetails')[0].reset();
                             $('#myTable1').DataTable().destroy();
-                        $('#myTable2').DataTable().destroy();
-                        $('#myTable3').DataTable().destroy();
-                        $('#myTable4').DataTable().destroy();
-                        $('#feedbackTable').DataTable().destroy();
-                        $("#myTable1").load(location.href + " #myTable1 > *", function() {
-                            $('#myTable1').DataTable();
-                        });
-                        $("#myTable2").load(location.href + " #myTable2 > *", function() {
-                            $('#myTable2').DataTable();
-                        });
-                        $("#myTable3").load(location.href + " #myTable3 > *", function() {
-                            $('#myTable3').DataTable();
-                        });
-                        $("#myTable4").load(location.href + " #myTable3 > *", function() {
-                            $('#myTable3').DataTable();
-                        });
-                        $("#feedbackTable").load(location.href + " #feedbackTable > *", function() {
-                            $('#feedbackTable').DataTable();
-                        });
-                        $('#navref1').load(location.href + " #navref1");
-                        $('#navref2').load(location.href + " #navref2");
-                        $('#navref3').load(location.href + " #navref3");
-                        $('#navref33').load(location.href + " #navref3");
-                        $('#navref4').load(location.href + " #navref4");
+                            $('#myTable2').DataTable().destroy();
+                            $('#myTable3').DataTable().destroy();
+                            $('#myTable4').DataTable().destroy();
+                            $('#feedbackTable').DataTable().destroy();
+                            $("#myTable1").load(location.href + " #myTable1 > *", function() {
+                                $('#myTable1').DataTable();
+                            });
+                            $("#myTable2").load(location.href + " #myTable2 > *", function() {
+                                $('#myTable2').DataTable();
+                            });
+                            $("#myTable3").load(location.href + " #myTable3 > *", function() {
+                                $('#myTable3').DataTable();
+                            });
+                            $("#myTable4").load(location.href + " #myTable3 > *", function() {
+                                $('#myTable3').DataTable();
+                            });
+                            $("#feedbackTable").load(location.href + " #feedbackTable > *", function() {
+                                $('#feedbackTable').DataTable();
+                            });
+                            $('#navref1').load(location.href + " #navref1");
+                            $('#navref2').load(location.href + " #navref2");
+                            $('#navref3').load(location.href + " #navref3");
+                            $('#navref33').load(location.href + " #navref3");
+                            $('#navref4').load(location.href + " #navref4");
                             console.log("Complaint rejected successfully!");
                         } else {
                             alertify.error('Complaint Rejected!');
