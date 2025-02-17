@@ -1317,7 +1317,7 @@ if (isset($_POST['fdept'])) {
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                    
                                         <tbody>
                                             <?php
                                             $s = 1;
