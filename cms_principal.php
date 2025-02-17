@@ -396,6 +396,15 @@ $result11 = mysqli_query($db, $sql11);
                     <div class="tab-pane fade p-20 active show" id="requirements" role="tabpanel">
                         <div class="row">
                             <div class="col-md-12">
+                            <div class="card-header">
+                                                            <h4>
+                                                                Raise Complaint
+                                                                <button type="button" class="btn btn-info float-end fac" data-bs-toggle="modal" data-bs-target="#cmodal">Raise Complaint</button>
+                                                                <br><br>
+                                                            </h4>
+    </div>
+    <br>
+    </div>  
 
                                 <div class="card-body">
                                     <div class="table-responsive">
@@ -861,6 +870,77 @@ $result11 = mysqli_query($db, $sql11);
     </div>
 
 
+   <!-- Raise Complaint -->
+   <div class="modal fade" id="cmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Raise Complaint</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="addnewuser" enctype="multipart/form-data" onsubmit="handleSubmit(event)">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="block" class="form-label">Block <span style="color: red;">*</span></label>
+                            <input type="text" class="form-control" name="block_venue" placeholder="Eg:RK-206" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="venue" class="form-label">Venue <span style="color: red;">*</span></label>
+                            <select id="dropdown" class="form-control" name="venue_name" onchange="checkIfOthers()"
+                                required>
+                                <option value="">Select</option>
+                                <option value="class">Class Room</option>
+                                <option value="department">Department</option>
+                                <option value="lab">Lab</option>
+                                <option value="staff_room">Staff Room</option>
+                                <option id="oth" value="Other">Others</option>
+                            </select>
+                        </div>
+
+                        <div id="othersInput" style="display: none;">
+                            <label class="form-label" for="otherValue">Please specify: <span
+                                    style="color: red;">*</span></label>
+                            <input class="form-control" type="text" id="otherValue" name="otherValue"> <br>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="type_of_problem" class="form-label">Type of Problem <span
+                                    style="color: red;">*</span></label>
+                            <select class="form-control" name="type_of_problem" required>
+                                <option value="">Select</option>
+                                <option value="electrical">ELECTRICAL</option>
+                                <option value="civil">CIVIL</option>
+                                <option value="itkm">ITKM</option>
+                                <option value="transport">TRANSPORT</option>
+                                <option value="house">HOUSE KEEPING</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Problem Description <span
+                                    style="color: red;">*</span></label>
+                            <input type="text" class="form-control" name="problem_description"
+                                placeholder="Enter Description" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="images" class="form-label">Image <span style="color: red;">*</span></label>
+                            <input type="file" class="form-control" name="images" id="images"
+                                onchange="validateSize(this)" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="hidden" class="form-control" name="date_of_reg" id="date_of_reg">
+                        </div>
+                    </div>
+                    <input type="hidden" name="status" value="2">
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
     <!-- Feedback Modal -->
     <div class="modal fade" id="feedback_modal" tabindex="-1" aria-labelledby="feedbackModalLabel"
         aria-hidden="true">
@@ -1089,96 +1169,7 @@ $result11 = mysqli_query($db, $sql11);
                     </div>
                 </div>
 
-    <!------------------Pending Work Modal----------------->
-    <div class="tab-pane p-20" id="home" role="tabpanel">
-        <div class="modal fade" id="cmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Raise Complaint</h5>
-                        <button class="spbutton" type="button" class="btn-close" data-dismiss="modal"
-                            aria-label="Close"></button>
-                    </div>
-                    <div>
-                        <form id="addnewuser" enctype="multipart/form-data" onsubmit="handleSubmit(event)">
-                            <div class="modal-body">
-                                <div class="mb-3">
-                                    <input type="hidden" id="hidden_faculty_id" name="faculty_id"
-                                        value="<?php echo $faculty_id; ?>">
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="type_of_problem" class="form-label">Type of Problem <span
-                                            style="color: red;">*</span></label>
-                                    <select class="form-control" name="type_of_problem"
-                                        style="width: 100%; height:36px;">
-                                        <option>Select</option>
-                                        <option value="elecrtical">ELECTRICAL</option>
-                                        <option value="civil">CIVIL</option>
-                                        <option value="itkm">ITKM </option>
-                                        <option value="transport">TRANSPORT</option>
-                                        <option value="house">HOUSE KEEPING </option>
-                                    </select>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="block" class="form-label">Block <span
-                                            style="color: red;">*</span></label>
-                                    <input type="text" class="form-control" name="block_venue"
-                                        placeholder="Eg:RK-206 / Transport:Bus No" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="venue" class="form-label">Venue <span
-                                            style="color: red;">*</span></label>
-                                    <select id="dropdown" class="form-control" name="venue_name"
-                                        onchange="checkIfOthers()" style="width: 100%; height:36px;">
-                                        <option>Select</option>
-                                        <option value="class">Class Room</option>
-                                        <option value="department">Department</option>
-                                        <option value="lab">Lab</option>
-                                        <option value="staff_room">Staff Room</option>
-                                        <option id="oth" value="Other">Others</option>
-                                    </select>
-                                </div>
-
-                                <div id="othersInput" style="display: none;">
-                                    <label class="form-label" for="otherValue">Please specify: <span
-                                            style="color: red;">*</span></label>
-                                    <input class="form-control" type="text" id="otherValue" name="otherValue"> <br>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="description" class="form-label">Problem Description <span
-                                            style="color: red;">*</span></label>
-                                    <input type="text" class="form-control" name="problem_description"
-                                        placeholder="Enter Description" required>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="itemno" class="form-label">Item Number(for electrical/itkm work)</label>
-                                    <input type="text" class="form-control" name="itemno" placeholder="Eg: AC-102">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="images" class="form-label">Image(less than 2mb)<span
-                                            style="color: red;">*</span> </label>
-                                    <input type="file" class="form-control" name="images" id="images"
-                                        onchange="validateSize(this)" required>
-                                </div>
-                                <div class="mb-3">
-                                    <input type="hidden" class="form-control" name="date_of_reg" id="date_of_reg"
-                                        required>
-                                </div>
-                            </div>
-
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+   
 
 
     <!-- After Image Modal -->
