@@ -2408,6 +2408,9 @@ $row_count11 = mysqli_num_rows($result11);
                             button: "Ok",
                             timer: null
                         });
+                        $('#hod_approval').modal('hide');
+                            
+
                         $('#myTable1').DataTable().destroy();
                         $('#myTable2').DataTable().destroy();
                         $('#myTable3').DataTable().destroy();
