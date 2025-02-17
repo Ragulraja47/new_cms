@@ -191,16 +191,16 @@ display: inline-block;
 
     <div class="menu">
     <a href="cms_windex.php" class="menu-item">
-            <i class="fas fa-solid fa-user"></i>
+            <i class="fas fa-solid fa-user text-warning"></i>
             <span>Dashboard</span>
         </a>
     
         <a href="cms_work.php" class="menu-item">
-        <i class="fa-solid fa-list-check"></i>
+        <i class="fa-solid fa-list-check text-success"></i>
             <span>New Task</span>
         </a>
         <a href="cms_workall.php" class="menu-item">
-        <i class="fa-solid fa-bars-progress"></i>            <span>Manage Tasks</span>
+        <i class="fa-solid fa-bars-progress text-primary"></i>            <span>Manage Tasks</span>
         </a>
         </a>
     </div>
