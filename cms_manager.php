@@ -394,37 +394,37 @@ if (isset($_POST['fdept'])) {
 
                         <li class="nav-item" role="presentation">
                             <a class="nav-link active" data-bs-toggle="tab" id="edit-bus-tab" href="#complain" role="tab" aria-selected="true">
-                                <span class="hidden-xs-down" style="font-size: 0.9em;">
-                                    <i class="fas fa-exclamation-triangle tab-icon"></i> Complaint Raised (<?php echo $row_count1; ?>)
-                                </span>
+                                <div id="navref1"> <span class="hidden-xs-down" style="font-size: 0.9em;">
+                                        <i class="fas fa-exclamation-triangle tab-icon"></i> Complaint Raised (<?php echo $row_count1; ?>)
+                                    </span> </div>
                             </a>
                         </li>
                         <li class="nav-item" role="presentation">
                             <a class="nav-link" data-bs-toggle="tab" id="delete-bus-tab" href="#principal" role="tab" aria-selected="true">
-                                <span class="hidden-xs-down" style="font-size: 0.9em;">
-                                    <i class="fas fa-user-check tab-icon"></i> Principal Approval (<?php echo $row_count4; ?>)
-                                </span>
+                                <div id="navref2"> <span class="hidden-xs-down" style="font-size: 0.9em;">
+                                        <i class="fas fa-user-check tab-icon"></i> Principal Approval (<?php echo $row_count4; ?>)
+                                    </span> </div>
                             </a>
                         </li>
                         <li class="nav-item" role="presentation">
                             <a class="nav-link" data-bs-toggle="tab" id="route-bus-tab" href="#worker" role="tab" aria-selected="true">
-                                <span class="hidden-xs-down" style="font-size: 0.9em;">
-                                    <i class="fas fa-user-cog tab-icon"></i> Assigned (<?php echo $row_count3; ?>)
-                                </span>
+                                <div id="navref3"> <span class="hidden-xs-down" style="font-size: 0.9em;">
+                                        <i class="fas fa-user-cog tab-icon"></i> Assigned (<?php echo $row_count3; ?>)
+                                    </span> </div>
                             </a>
                         </li>
                         <li class="nav-item" role="presentation">
                             <a class="nav-link" data-bs-toggle="tab" id="fleet-management-bus-tab" href="#finished" role="tab" aria-selected="true">
-                                <span class="hidden-xs-down" style="font-size: 0.9em;">
-                                    <i class="fas fa-comment-dots tab-icon"></i> Response (<?php echo $row_count5; ?>)
-                                </span>
+                                <div id="navref4"> <span class="hidden-xs-down" style="font-size: 0.9em;">
+                                        <i class="fas fa-comment-dots tab-icon"></i> Response (<?php echo $row_count5; ?>)
+                                    </span> </div>
                             </a>
                         </li>
                         <li class="nav-item" role="presentation">
                             <a class="nav-link" data-bs-toggle="tab" id="settings-bus-tab" href="#reassigned" role="tab" aria-selected="true">
-                                <span class="hidden-xs-down" style="font-size: 0.9em;">
-                                    <i class="fas fa-redo tab-icon"></i> Reassigned (<?php echo $row_count7; ?>)
-                                </span>
+                                <div id="navref5"> <span class="hidden-xs-down" style="font-size: 0.9em;">
+                                        <i class="fas fa-redo tab-icon"></i> Reassigned (<?php echo $row_count7; ?>)
+                                    </span> </div>
                             </a>
                         </li>
                         <li class="nav-item" role="presentation">
