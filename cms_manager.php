@@ -81,11 +81,12 @@ if (isset($_POST['fdept'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" type="image/png" sizes="16x16" href="../image/icons/mkce_s.png">
-    <title>MIC - MKCE</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="image/icons/mkce_s.png">
+    <title>MIC</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="tabs.css">
     <link rel="stylesheet" href="cms_style.css">
+    <link rel="stylesheet" href="dboardstyles.css">
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
 
@@ -392,8 +393,15 @@ if (isset($_POST['fdept'])) {
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs" role="tablist" id="navli">
 
+                        <li class="nav-item active" role="presentation">
+                            <a class="nav-link active" data-bs-toggle="tab" id="add-bus-tab"
+                                href="#dashboard" role="tab" aria-selected="true">
+                                <span class="hidden-xs-down" style="font-size: 0.9em;"><i
+                                        class="fas fa-tachometer-alt tab-icon"></i><b>&nbsp Dashboard</b></span>
+                            </a>
+                        </li>
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link active" data-bs-toggle="tab" id="edit-bus-tab" href="#complain" role="tab" aria-selected="true">
+                            <a class="nav-link" data-bs-toggle="tab" id="edit-bus-tab" href="#complain" role="tab" aria-selected="true">
                                 <div id="navref1"> <span class="hidden-xs-down" style="font-size: 0.9em;">
                                         <i class="fas fa-exclamation-triangle tab-icon"></i> Complaint Raised (<?php echo $row_count1; ?>)
                                     </span> </div>
@@ -445,14 +453,96 @@ if (isset($_POST['fdept'])) {
 
                 </div>
 
-
-
-
                 <!--Container for table and modal-->
                 <div class="tab-content">
 
+                    <!--Dashboard-->
+                    <div class="tab-pane p-20 active show" id="dashboard" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <!-- <div class="card-header"> -->
+                                <h4 class="card-title m-b-0"><b></b></h4><br>
+
+                                <br>
+                                <div class="row">
+                                    <!-- Pending -->
+                                    <div class="col-12 col-md-3" style="margin-bottom: 40px">
+                                        <div class="cir">
+                                            <div class="bo">
+                                                <div class="content1">
+                                                    <div class="stats-box text-center p-3" style="background-color:orange;">
+                                                        <i class="fas fa-clock"></i>
+                                                        <h1 class="font-light text-white">
+                                                            <?php echo $row_count1;
+                                                            ?>
+                                                        </h1>
+                                                        <small class="font-light">New Issues</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Approved -->
+                                    <div class="col-12 col-md-3">
+                                        <div class="cir">
+                                            <div class="bo">
+                                                <div class="content1">
+                                                    <div class="stats-box text-center p-3" style="background-color:rgb(14, 86, 239);">
+                                                        <i class="fas fa-check"></i>
+                                                        <h1 class="font-light text-white">
+                                                            <?php echo $row_count3;
+                                                            ?>
+                                                        </h1>
+                                                        <small class="font-light">Pending</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Completed -->
+                                    <div class="col-12 col-md-3">
+                                        <div class="cir">
+                                            <div class="bo">
+                                                <div class="content1">
+                                                    <div class="stats-box text-center p-3" style="background-color:rgb(70, 160, 70);">
+                                                        <i class="fa-solid fa-check-double"></i>
+                                                        <h1 class="font-light text-white">
+                                                            <?php echo $row_count2;
+                                                            ?>
+                                                        </h1>
+                                                        <small class="font-light">Completed</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Rejected -->
+                                    <div class="col-12 col-md-3">
+                                        <div class="cir">
+                                            <div class="bo">
+                                                <div class="content1">
+                                                    <div class="stats-box text-center p-3" style="background-color:red;">
+                                                        <i class="fa-solid fa-xmark"></i>
+                                                        <h1 class="font-light text-white">
+                                                            <?php echo $row_count7;
+                                                            ?>
+                                                        </h1>
+                                                        <small class="font-light">Reassigned</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <!--Complaint start-->
-                    <div class="tab-pane p-20 active show" id="complain" role="tabpanel">
+                    <div class="tab-pane p-20 show" id="complain" role="tabpanel">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="card">

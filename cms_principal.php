@@ -58,6 +58,8 @@ $result11 = mysqli_query($db, $sql11);
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="tabs.css">
     <link rel="stylesheet" href="cms_style.css">
+    <link rel="stylesheet" href="dboardstyles.css">
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css" rel="stylesheet">
@@ -344,7 +346,7 @@ $result11 = mysqli_query($db, $sql11);
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Research</li>
+                    <li class="breadcrumb-item active" aria-current="page">Complaints</li>
                 </ol>
             </nav>
         </div>
@@ -355,55 +357,149 @@ $result11 = mysqli_query($db, $sql11);
 
                 <ul class="nav nav-tabs" role="tablist">
                     <!-- Center the main tabs -->
+
+                    <li class="nav-item active" role="presentation">
+                        <a class="nav-link active" data-bs-toggle="tab" id="add-bus-tab"
+                            href="#dashboard" role="tab" aria-selected="true">
+                            <span class="hidden-xs-down" style="font-size: 0.9em;"><i
+                                    class="fas fa-tachometer-alt tab-icon"></i><b>&nbsp Dashboard</b></span>
+                        </a>
+                    </li>
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link active" data-bs-toggle="tab" id="edit-bus-tab" href="#requirements" role="tab"
+                        <a class="nav-link" data-bs-toggle="tab" id="edit-bus-tab" href="#requirements" role="tab"
                             aria-selected="true">
-                            <span class="hidden-xs-down" id="ref4" style="font-size: 0.9em;"><i class="fas fa-book tab-icon"></i>
+                            <span class="hidden-xs-down" id="ref4" style="font-size: 0.9em;"><i class="fas fa-list-alt tab-icon"></i>
                                 Requirements</span>
                         </a>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link" data-bs-toggle="tab" id="edit-bus-tab" href="#completed" role="tab"
+                        <a class="nav-link" data-bs-toggle="tab" id="delete-bus-tab" href="#completed" role="tab"
                             aria-selected="true">
                             <span class="hidden-xs-down" id="ref5" style="font-size: 0.9em;"><i
-                                    class="fas fa-book tab-icon"></i>Completed Works</span>
+                                    class="fas fa-check-circle tab-icon"></i>Completed Works</span>
                         </a>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link" data-bs-toggle="tab" id="edit-bus-tab" href="#inprogress" role="tab"
+                        <a class="nav-link" data-bs-toggle="tab" id="route-bus-tab" href="#inprogress" role="tab"
                             aria-selected="true">
                             <span class="hidden-xs-down" ref="ref3" style="font-size: 0.9em;"><i
-                                    class="fas fa-book tab-icon"></i>Work Asigned</span>
+                                    class="fas fa-tasks tab-icon"></i>Work Asigned</span>
                         </a>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link" data-bs-toggle="tab" id="edit-bus-tab" href="#complaints" role="tab"
+                        <a class="nav-link" data-bs-toggle="tab" id="settings-bus-tab" href="#complaints" role="tab"
                             aria-selected="true">
                             <span class="hidden-xs-down" id="ref1" style="font-size: 0.9em;"><i
-                                    class="fas fa-book tab-icon"></i>My Complaints</span>
+                                    class="fas fa-exclamation-triangle tab-icon"></i>My Complaints</span>
                         </a>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link" data-bs-toggle="tab" id="edit-bus-tab" href="#waitfeed" role="tab"
+                        <a class="nav-link" data-bs-toggle="tab" id="fleet-management-bus-tab" href="#waitfeed" role="tab"
                             aria-selected="true">
                             <span class="hidden-xs-down" id="ref1" style="font-size: 0.9em;"><i
-                                    class="fas fa-book tab-icon"></i>Feedback</span>
+                                    class="fas fa-comment tab-icon"></i>Feedback</span>
                         </a>
                     </li>
                 </ul>
 
+                <!--Container for table and modal-->
                 <div class="tab-content">
-                    <div class="tab-pane fade p-20 active show" id="requirements" role="tabpanel">
+
+                    <!--Dashboard-->
+                    <div class="tab-pane fade show active p-20" id="dashboard" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <!-- <div class="card-header"> -->
+                                <h4 class="card-title m-b-0"><b></b></h4><br>
+                                <br>
+                                <div class="row">
+                                    <!-- Pending -->
+                                    <div class="col-12 col-md-3" style="margin-bottom: 40px">
+                                        <div class="cir">
+                                            <div class="bo">
+                                                <div class="content1">
+                                                    <div class="stats-box text-center p-3" style="background-color:orange;">
+                                                        <i class="fas fa-clock"></i>
+                                                        <h1 class="font-light text-white">
+                                                            <?php echo $pending;
+                                                            ?>
+                                                        </h1>
+                                                        <small class="font-light">Pending</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Approved -->
+                                    <div class="col-12 col-md-3">
+                                        <div class="cir">
+                                            <div class="bo">
+                                                <div class="content1">
+                                                    <div class="stats-box text-center p-3" style="background-color:rgb(14, 86, 239);">
+                                                        <i class="fas fa-check"></i>
+                                                        <h1 class="font-light text-white">
+                                                            <?php echo $request;
+                                                            ?>
+                                                        </h1>
+                                                        <small class="font-light">Request</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Completed -->
+                                    <div class="col-12 col-md-3">
+                                        <div class="cir">
+                                            <div class="bo">
+                                                <div class="content1">
+                                                    <div class="stats-box text-center p-3" style="background-color:rgb(70, 160, 70);">
+                                                        <i class="fa-solid fa-check-double"></i>
+                                                        <h1 class="font-light text-white">
+                                                            <?php echo $inprogress;
+                                                            ?>
+                                                        </h1>
+                                                        <small class="font-light">In Progress</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Rejected -->
+                                    <div class="col-12 col-md-3">
+                                        <div class="cir">
+                                            <div class="bo">
+                                                <div class="content1">
+                                                    <div class="stats-box text-center p-3" style="background-color:red;">
+                                                        <i class="fa-solid fa-xmark"></i>
+                                                        <h1 class="font-light text-white">
+                                                            <?php echo $completed;
+                                                            ?>
+                                                        </h1>
+                                                        <small class="font-light">Completed</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade p-20 show" id="requirements" role="tabpanel">
                         <div class="row">
                             <div class="col-md-12">
-                            <div class="card-header">
-                                                            <h4>
-                                                                Raise Complaint
-                                                                <button type="button" class="btn btn-info float-end fac" data-bs-toggle="modal" data-bs-target="#cmodal">Raise Complaint</button>
-                                                                <br><br>
-                                                            </h4>
-    <br>
-    </div>  
+                                <div class="card-header">
+                                    <h4>
+                                        Raise Complaint
+                                        <button type="button" class="btn btn-info float-end fac" data-bs-toggle="modal" data-bs-target="#cmodal">Raise Complaint</button>
+                                        <br><br>
+                                    </h4>
+                                    <br>
+                                </div>
 
                                 <div class="card-body">
                                     <div class="table-responsive">
@@ -864,13 +960,13 @@ $result11 = mysqli_query($db, $sql11);
         </div>
 
 
-    <!-- Footer -->
-    <?php include 'footer.php'; ?>
+        <!-- Footer -->
+        <?php include 'footer.php'; ?>
     </div>
 
 
-   <!-- Raise Complaint -->
-   <div class="modal fade" id="cmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- Raise Complaint -->
+    <div class="modal fade" id="cmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -1099,76 +1195,76 @@ $result11 = mysqli_query($db, $sql11);
         </div>
     </div>
 
-           <!-- Complaint Details Modal -->
-           <div class="modal fade" id="complaintDetailsModal" tabindex="-1" aria-labelledby="complaintDetailsModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-lg">
-                        <div class="modal-content">
+    <!-- Complaint Details Modal -->
+    <div class="modal fade" id="complaintDetailsModal" tabindex="-1" aria-labelledby="complaintDetailsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
 
-                            <!-- Modal Header -->
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="complaintDetailsModalLabel">
-                                    📋 Complaint Details
-                                </h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h5 class="modal-title" id="complaintDetailsModalLabel">
+                        📋 Complaint Details
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
 
-                            <!-- Modal Body -->
-                            <div class="modal-body">
-                                <div class="row">
-                                    <!-- Left Column -->
-                                    <div class="col-md-6 mb-3">
-                                        <label class="fw-bold">Complaint ID</label>
-                                        <div class="text-muted"><b id="id"></b></div>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label class="fw-bold">Faculty Name</label>
-                                        <div class="text-muted"><b id="faculty_name"></b></div>
-                                    </div>
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <div class="row">
+                        <!-- Left Column -->
+                        <div class="col-md-6 mb-3">
+                            <label class="fw-bold">Complaint ID</label>
+                            <div class="text-muted"><b id="id"></b></div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="fw-bold">Faculty Name</label>
+                            <div class="text-muted"><b id="faculty_name"></b></div>
+                        </div>
 
-                                    <!-- Right Column -->
-                                    <div class="col-md-6 mb-3">
-                                        <label class="fw-bold">Mobile Number</label>
-                                        <div class="text-muted"><b id="faculty_contact"></b></div>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label class="fw-bold">E-mail</label>
-                                        <div class="text-muted"><b id="faculty_mail"></b></div>
-                                    </div>
+                        <!-- Right Column -->
+                        <div class="col-md-6 mb-3">
+                            <label class="fw-bold">Mobile Number</label>
+                            <div class="text-muted"><b id="faculty_contact"></b></div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="fw-bold">E-mail</label>
+                            <div class="text-muted"><b id="faculty_mail"></b></div>
+                        </div>
 
-                                    <div class="col-md-6 mb-3">
-                                        <label class="fw-bold">Faculty ID</label>
-                                        <div class="text-muted"><b id="fac_id"></b></div>
-                                    </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="fw-bold">Faculty ID</label>
+                            <div class="text-muted"><b id="fac_id"></b></div>
+                        </div>
 
-                                    <!-- Venue and Type of Problem -->
-                                    <div class="col-md-6 mb-3">
-                                        <label class="fw-bold">Venue Name</label>
-                                        <div class="text-muted"><b id="venue_name"></b></div>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label class="fw-bold">Type of Problem</label>
-                                        <div class="text-muted"><b id="type_of_problem"></b></div>
-                                    </div>
+                        <!-- Venue and Type of Problem -->
+                        <div class="col-md-6 mb-3">
+                            <label class="fw-bold">Venue Name</label>
+                            <div class="text-muted"><b id="venue_name"></b></div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="fw-bold">Type of Problem</label>
+                            <div class="text-muted"><b id="type_of_problem"></b></div>
+                        </div>
 
-                                    <!-- Problem Description -->
-                                    <div class="col-md-12">
-                                        <label class="fw-bold">Problem Description</label>
-                                        <div class="alert alert-light" role="alert">
-                                            <span id="problem_description"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Modal Footer -->
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                        <!-- Problem Description -->
+                        <div class="col-md-12">
+                            <label class="fw-bold">Problem Description</label>
+                            <div class="alert alert-light" role="alert">
+                                <span id="problem_description"></span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-   
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
 
     <!-- After Image Modal -->
@@ -1623,51 +1719,51 @@ $result11 = mysqli_query($db, $sql11);
 
         //jquerry for view complaint
         $(document).on("click", ".viewcomplaint", function(e) {
-                e.preventDefault();
-                var user_id = $(this).val();
-                var fac_id = $(this).data("value");
-                console.log(user_id);
-                // Clear the previously entered modal
-                $("#id").text("");
-                $("#type_of_problem").text("");
-                $("#problem_description").text("");
-                $("#faculty_name").text("");
-                $("#faculty_mail").text("");
-                $("#faculty_contact").text("");
-                $("#block_venue").text("");
-                $("#venue_name").text("");
-                $("#fac_name").text("N/A");
-                $("#fac_id").text("N/A");
-                $.ajax({
-                    type: "POST",
-                    url: 'cms_backend.php?action=view_complaint',
-                    data: {
-                        user_id: user_id,
-                        fac_id: fac_id,
-                    },
-                    success: function(response) {
-                        var res = jQuery.parseJSON(response);
-                        console.log(res);
-                        if (res.status == 404) {
-                            alert(res.message);
-                        } else {
-                            //$('#student_id2').val(res.data.uid);
-                            $("#id").text(res.data.id);
-                            $("#type_of_problem").text(res.data.type_of_problem);
-                            $("#problem_description").text(res.data.problem_description);
-                            $("#faculty_name").text(res.data.fname);
-                            $("#faculty_mail").text(res.data.email);
-                            $("#faculty_contact").text(res.data.mobile);
-                            $("#block_venue").text(res.data.block_venue);
-                            $("#venue_name").text(res.data.venue_name);
-        
-                            $("#fac_id").text(res.data.faculty_id);
+            e.preventDefault();
+            var user_id = $(this).val();
+            var fac_id = $(this).data("value");
+            console.log(user_id);
+            // Clear the previously entered modal
+            $("#id").text("");
+            $("#type_of_problem").text("");
+            $("#problem_description").text("");
+            $("#faculty_name").text("");
+            $("#faculty_mail").text("");
+            $("#faculty_contact").text("");
+            $("#block_venue").text("");
+            $("#venue_name").text("");
+            $("#fac_name").text("N/A");
+            $("#fac_id").text("N/A");
+            $.ajax({
+                type: "POST",
+                url: 'cms_backend.php?action=view_complaint',
+                data: {
+                    user_id: user_id,
+                    fac_id: fac_id,
+                },
+                success: function(response) {
+                    var res = jQuery.parseJSON(response);
+                    console.log(res);
+                    if (res.status == 404) {
+                        alert(res.message);
+                    } else {
+                        //$('#student_id2').val(res.data.uid);
+                        $("#id").text(res.data.id);
+                        $("#type_of_problem").text(res.data.type_of_problem);
+                        $("#problem_description").text(res.data.problem_description);
+                        $("#faculty_name").text(res.data.fname);
+                        $("#faculty_mail").text(res.data.email);
+                        $("#faculty_contact").text(res.data.mobile);
+                        $("#block_venue").text(res.data.block_venue);
+                        $("#venue_name").text(res.data.venue_name);
 
-                            $("#complaintDetailsModal").modal("show");
-                        }
-                    },
-                });
+                        $("#fac_id").text(res.data.faculty_id);
+
+                        $("#complaintDetailsModal").modal("show");
+                    }
+                },
             });
+        });
 
         // Add Faculty complaints to database
         $(document).on('submit', '#addnewuser', function(e) {
