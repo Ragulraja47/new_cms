@@ -1195,16 +1195,24 @@ if (isset($_POST['fdept'])) {
                                     Work's Records
                                 </a>
                             </li>
-                            <li class="nav-item "> <!-- Add margin between tabs -->
+                            <li class="nav-item " style="margin-right: 10px;"> <!-- Add margin between tabs -->
                                 <a class="nav-link" id="add-bus-tab" data-bs-toggle="tab" style="font-size: 0.9em;"
                                     href="#workersr" role="tab" aria-selected="false">
                                     Worker's Records
                                 </a>
                             </li>
-                            <li class="nav-item "> <!-- Add margin between tabs -->
+
+                            <li class="nav-item  " style="margin-right: 10px;"> <!-- Add margin between tabs -->
                                 <a class="nav-link" id="add-bus-tab" data-bs-toggle="tab" style="font-size: 0.9em;"
                                     href="#manageworker" role="tab" aria-selected="false">
                                     Worker's Records
+                                </a>
+                            </li>
+
+                            <li class="nav-item  " style="margin-right: 10px;"> <!-- Add margin between tabs -->
+                                <a class="nav-link" id="add-bus-tab" data-bs-toggle="tab" style="font-size: 0.9em;"
+                                    href="#deactivated_user" role="tab" aria-selected="false">
+                                    Deactivated User's
                                 </a>
                             </li>
                         </ul>
@@ -1254,8 +1262,6 @@ if (isset($_POST['fdept'])) {
                                 </div>
                             </div>
 
-
-
                             <!--workers record-->
                             <div class="tab-pane p-20" id="workersr" role="tabpanel">
                                 <h5 class="card-title">Worker's Record</h5><br>
@@ -1296,7 +1302,6 @@ if (isset($_POST['fdept'])) {
 
                             </div>
 
-
                             <!--Manager workers-->
                             <div class="tab-pane p-20" id="manageworker" role="tabpanel">
                                 <h5 class="card-title">Worker's Record</h5><br>
@@ -1317,7 +1322,6 @@ if (isset($_POST['fdept'])) {
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
-                                    
                                         <tbody>
                                             <?php
                                             $s = 1;
@@ -1344,10 +1348,43 @@ if (isset($_POST['fdept'])) {
                                             ?>
                                         </tbody>
 
-                                        </tbody>
+
                                     </table>
                                 </div>
 
+                            </div>
+
+                            <!-- Deactivated User Table -->
+                            <div class="tab-pane p-20" id="deactivated_user" role="tabpanel">
+                                <div class="row">
+                                    <div class="col-md-12">
+
+                                        <table id="activate_table" class="table table-striped table-bordered">
+                                            <thead class="gradient-header">
+                                                <tr>
+                                                    <th class="text-center"><b>
+                                                            <h5>S.No</h5>
+                                                        </b></th>
+                                                    <th class="col-md-2 text-center"><b>
+                                                            <h5>Faculty Name</h5>
+                                                        </b></th>
+                                                    <th class="text-center"><b>
+                                                            <h5>Faculty Id</h5>
+                                                        </b></th>
+                                                    <th class="text-center"><b>
+                                                            <h5>Department</h5>
+                                                        </b></th>
+                                                    <th class="col-md-2 text-center"><b>
+                                                            <h5>Action</h5>
+                                                        </b></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
 
                         </div>
