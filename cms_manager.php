@@ -1227,21 +1227,37 @@ if (isset($_POST['fdept'])) {
                                 <h5 class="card-title">Work's Completed</h5><br>
 
                                 <!-- Date Range Filter Form -->
-                                <form class="data_filter_form" id="date-filter-form">
-                                    <div class="mb-3">
-                                        <label for="from_date" class="form-label">From Date:</label>
-                                        <input type="date" id="from_date" name="from_date" class="form-control" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="to_date" class="form-label">To Date:</label>
-                                        <input type="date" id="to_date" name="to_date" class="form-control" required>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Filter</button>
-                                </form>
+                                <form id="date-filter-form" style="padding: 15px; border: 1px solid #ddd; border-radius: 10px; background: #f8f9fa; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);">
+                                    <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px;">
+                                        <!-- From Date -->
+                                        <div style="flex: 1;">
+                                            <label for="from_date" style="font-weight: bold;">From Date:</label>
+                                            <input type="date" id="from_date" name="from_date" required
+                                                style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 8px; outline: none;">
+                                        </div>
 
-                                <!-- Download Button -->
-                                <button id="download" class="btn btn-success float-end">Download as Excel</button>
-                                <br><br>
+                                        <!-- To Date -->
+                                        <div style="flex: 1;">
+                                            <label for="to_date" style="font-weight: bold;">To Date:</label>
+                                            <input type="date" id="to_date" name="to_date" required
+                                                style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 8px; outline: none;">
+                                        </div>
+
+                                        <!-- Buttons (Now with Margin-Top) -->
+                                        <div style="display: flex; gap: 10px; margin-top: 20px;">
+                                            <!-- Filter Button -->
+                                            <button type="submit" style="padding: 8px 15px; border: none; border-radius: 8px; background: #007bff; color: white; font-weight: bold; cursor: pointer;">
+                                                Filter
+                                            </button>
+
+                                            <!-- Download Button -->
+                                            <button id="download" style="padding: 8px 15px; border: none; border-radius: 8px; background: #28a745; color: white; font-weight: bold; cursor: pointer;">
+                                                Download as Excel
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <br>
 
                                 <h5 class="card-title">Work Completed Records</h5><br>
                                 <div class="table-responsive">
@@ -1270,21 +1286,39 @@ if (isset($_POST['fdept'])) {
                             <div class="tab-pane p-20" id="workersr" role="tabpanel">
                                 <h5 class="card-title">Worker's Record</h5><br>
 
-                                <form id="date-form" class="data_filter_form">
-                                    <div class="mb-3">
-                                        <label for="from_date" class="form-label">From Date:</label>
-                                        <input type="date" name="from_date" class="form-control" required>
+                                <!-- Date Range Filter Form -->
+                                <form id="date-form" style="padding: 15px; border: 1px solid #ddd; border-radius: 10px; background: #f8f9fa; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);">
+                                    <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px;">
+                                        <!-- From Date -->
+                                        <div style="flex: 1;">
+                                            <label for="from_date" style="font-weight: bold;">From Date:</label>
+                                            <input type="date" id="from_date" name="from_date" required
+                                                style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 8px; outline: none;">
+                                        </div>
+
+                                        <!-- To Date -->
+                                        <div style="flex: 1;">
+                                            <label for="to_date" style="font-weight: bold;">To Date:</label>
+                                            <input type="date" id="to_date" name="to_date" required
+                                                style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 8px; outline: none;">
+                                        </div>
+
+                                        <!-- Buttons (Now with Margin-Top) -->
+                                        <div style="display: flex; gap: 10px; margin-top: 20px;">
+                                            <!-- Filter Button -->
+                                            <button type="submit" style="padding: 8px 15px; border: none; border-radius: 8px; background: #007bff; color: white; font-weight: bold; cursor: pointer;">
+                                                Filter
+                                            </button>
+
+                                            <!-- Download Button -->
+                                            <button id="download1" style="padding: 8px 15px; border: none; border-radius: 8px; background: #28a745; color: white; font-weight: bold; cursor: pointer;">
+                                                Download as Excel
+                                            </button>
+                                        </div>
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="to_date" class="form-label">To Date:</label>
-                                        <input type="date" name="to_date" class="form-control" required>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Filter</button>
                                 </form>
-
-                                <button id="download1" class="btn btn-success float-end">Download as Excel</button>
-                                <br><br>
-
+                                <br>
+                                
                                 <div class="table-responsive">
                                     <table id="Rworkers" class="table table-striped table-bordered">
                                         <thead class="gradient-header">
