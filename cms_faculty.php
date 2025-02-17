@@ -45,22 +45,9 @@ if (isset($_POST['feedcheck'])) {
         }
     }
 }
-$nofeedvar = 0;
 
-if (isset($_POST['nofeedvar'])) {
-    $sql = "SELECT * FROM complaints_detail WHERE id='$faculty_id' AND nofeed='1'";
-    $sql_run = mysqli_query($db, $sql);
-    $data = mysqli_fetch_array($sql_run);
-    while ($data) {
-        $nofeedvar += 1;
-    }
-    $res = [
-        "status" => 200,
-        "message" => "value fetched",
-    ];
-    echo json_encode($res);
-    exit;
-}
+
+
 
 
 
@@ -596,12 +583,30 @@ if (isset($_POST['facdet'])) {
                                 <div class="card">
                                     <div class="card-body">
                                         <div id="raise_complaint">
-                                            <?php if ($nofeedvar > 0) { ?>
-                                                <button type="button" class="btn btn-info float-end" data-bs-toggle="modal" data-bs-target="#cmodal" disabled>Raise Complaint</button>
-                                            <?php } else { ?>
-                                                <button type="button" class="btn btn-info float-end" data-bs-toggle="modal" data-bs-target="#cmodal">Raise Complaint</button>
-                                            <?php } ?>
-                                            <br><br>
+                                            <?php
+                                           
+                                                $sql = "SELECT * FROM complaints_detail WHERE faculty_id='$faculty_id' AND nofeed='1'";
+                                                $sql_run = mysqli_query($db, $sql);
+                                                $data = mysqli_fetch_array($sql_run);
+                                                if($data) {
+                                                    ?>
+                                                                                                    <button type="button" class="btn btn-info float-end" data-bs-toggle="modal" data-bs-target="#cmodal" disabled>Raise Complaint</button>
+
+                                                                                                    <?php
+                                                }
+                                                else{
+                                                                                                    ?>
+                                                                                                                                                    <button type="button" class="btn btn-info float-end" data-bs-toggle="modal" data-bs-target="#cmodal">Raise Complaint</button>
+
+                                                                                                                                                    <?php
+                                                }
+                                                                                                                                                    ?>
+                                                                                                    
+                                                   
+                                               
+                                            
+                                            
+                                   <br><br>
                                         </div>
                                         <div class="table-responsive">
                                             <table id="user" class="table table-bordered table-striped">
@@ -1527,7 +1532,7 @@ if (isset($_POST['facdet'])) {
         stars.forEach((star, index) => {
             star.addEventListener("click", () => {
                 // Remove the "highlighted" class from all stars hidhlited is used in Style
-                stars.forEach(s => s.classList.remove("highlighted"));
+                stars.forEach(s =       > s.classList.remove("highlighted"));
 
                 // Add the "highlighted" class to all stars up to the clicked one
                 for (let i = 0; i <= index; i++) {
