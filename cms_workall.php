@@ -116,7 +116,7 @@ $sql3 = "
     WHERE 
         (m.worker_dept='$dept')
     AND 
-        cd.status IN('14','16')
+        cd.status IN('16')
 ";
 
 $stmt = $db->prepare($sql3);
@@ -852,7 +852,7 @@ $notcount = mysqli_num_rows($result4);
                                                                 <h5>Date of completion</h5>
                                                             </b></th>
                                                         <th class="text-center"><b>
-                                                                <h5>Status</h5>
+                                                                <h5>Feedback</h5>
                                                             </b></th>
 
                                                     </tr>
@@ -901,7 +901,7 @@ $notcount = mysqli_num_rows($result4);
                                                                 ?>
                                                     <td class="text-center"><button type="button" class="btn btn-info "
                                                             data-toggle="modal">
-                                                            Completed
+                                                            <?php echo $row['feedback'] ?>
                                                         </button></td>
                                                     <?php
 

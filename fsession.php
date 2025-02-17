@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$s = '1152061'; //faculty
+$s = '1114030'; //faculty
 //$s = '1152062'; //infra
 //$s = '1152063'; //hod
 //$s = '1141014'; //eo

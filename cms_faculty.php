@@ -584,29 +584,28 @@ if (isset($_POST['facdet'])) {
                                     <div class="card-body">
                                         <div id="raise_complaint">
                                             <?php
-                                           
-                                                $sql = "SELECT * FROM complaints_detail WHERE faculty_id='$faculty_id' AND nofeed='1'";
-                                                $sql_run = mysqli_query($db, $sql);
-                                                $data = mysqli_fetch_array($sql_run);
-                                                if($data) {
-                                                    ?>
-                                                                                                    <button type="button" class="btn btn-info float-end" data-bs-toggle="modal" data-bs-target="#cmodal" disabled>Raise Complaint</button>
 
-                                                                                                    <?php
-                                                }
-                                                else{
-                                                                                                    ?>
-                                                                                                                                                    <button type="button" class="btn btn-info float-end" data-bs-toggle="modal" data-bs-target="#cmodal">Raise Complaint</button>
+                                            $sql = "SELECT * FROM complaints_detail WHERE faculty_id='$faculty_id' AND nofeed='1'";
+                                            $sql_run = mysqli_query($db, $sql);
+                                            $data = mysqli_fetch_array($sql_run);
+                                            if ($data) {
+                                            ?>
+                                                <button type="button" class="btn btn-info float-end" data-bs-toggle="modal" data-bs-target="#cmodal" disabled>Raise Complaint</button>
 
-                                                                                                                                                    <?php
-                                                }
-                                                                                                                                                    ?>
-                                                                                                    
-                                                   
-                                               
-                                            
-                                            
-                                   <br><br>
+                                            <?php
+                                            } else {
+                                            ?>
+                                                <button type="button" class="btn btn-info float-end" data-bs-toggle="modal" data-bs-target="#cmodal">Raise Complaint</button>
+
+                                            <?php
+                                            }
+                                            ?>
+
+
+
+
+
+                                            <br><br>
                                         </div>
                                         <div class="table-responsive">
                                             <table id="user" class="table table-bordered table-striped">
@@ -1197,10 +1196,24 @@ if (isset($_POST['facdet'])) {
             ext = ext[ext.length - 1].toLowerCase();
             var arrayExtensions = ["jpg", "jpeg", "png"];
             if (arrayExtensions.lastIndexOf(ext) == -1) {
-                swal("Invalid Image Format, Only .jpeg, .jpg, .png format allowed", "", "error");
+                // swal("Invalid Image Format, Only .jpeg, .jpg, .png format allowed", "", "error");
+                swal({
+                    title: "Error",
+                    text: "Invalid Image Format, Only .jpeg, .jpg, .png format allowed",
+                    icon: "error",
+                    button: "Ok",
+                    timer: null
+                });
                 $(input).val('');
             } else if (filesize > 2048) {
-                swal("File is too large, Maximum 2 MB is allowed", "", "error");
+                // swal("File is too large, Maximum 2 MB is allowed", "", "error");
+                swal({
+                    title: "Error",
+                    text: "File is too large, Maximum 2 MB is allowed",
+                    icon: "error",
+                    button: "Ok",
+                    timer: null
+                });
                 $(input).val('');
             }
         }
@@ -1235,7 +1248,13 @@ if (isset($_POST['facdet'])) {
                 success: function(response) {
                     var res = jQuery.parseJSON(response);
                     if (res.status === 200) {
-                        swal("Complaint Submitted!", "", "success");
+                        swal({
+                            title: "success!",
+                            text: "Complaint submitted sucessfully!",
+                            icon: "success",
+                            button: "Ok",
+                            timer: null
+                        });
                         $('#cmodal').modal('hide');
                         $('#addnewuser')[0].reset(); // Reset the form
                         $('#navref1').load(location.href + " #navref1");
@@ -1278,7 +1297,13 @@ if (isset($_POST['facdet'])) {
                         if (res.status === 500) {
                             alert(res.message);
                         } else {
-                            swal("Complaint deleted successfully", "", "success");
+                            swal({
+                                title: "success!",
+                                text: "Complaint deleted successfully!",
+                                icon: "success",
+                                button: "Ok",
+                                timer: null
+                            });
                             $('#navref1').load(location.href + " #navref1");
                             $('#navref2').load(location.href + " #navref2");
                             $('#navref3').load(location.href + " #navref3");
@@ -1412,7 +1437,13 @@ if (isset($_POST['facdet'])) {
                     console.log(response);
                     var res = jQuery.parseJSON(response);
                     if (res.status == 200) {
-                        swal("Done!", "Feedback Submitted!", "success");
+                        swal({
+                            title: "Success!",
+                            text: "Feedback Submitted!",
+                            icon: "success",
+                            button: "Ok",
+                            timer: null
+                        });
                         $("#add_feedback")[0].reset();
                         $('#feedback_modal').modal('hide');
                         $('.modal-backdrop').remove(); // Remove lingering backdrop
@@ -1566,7 +1597,13 @@ if (isset($_POST['facdet'])) {
 
         $(document).on("click", ".limitovr", function(e) {
             e.preventDefault();
-            swal("Warning!", "You have crossed your complaint limit!", "warning");
+            swal({
+                title: "Warning!",
+                text: "You have crossed your complaint limit!",
+                icon: "warning",
+                button: "Ok",
+                timer: null
+            });
         })
 
 
@@ -1576,30 +1613,6 @@ if (isset($_POST['facdet'])) {
 
             // Set the reason in the modal's textarea
             $('#extendReasonTextarea').val(reason);
-        });
-
-        $(document).on("submit", "#passwordform", function(e) {
-            e.preventDefault();
-            var formdata = new FormData(this);
-            console.log(formdata);
-            console.log("hii");
-            $.ajax({
-                type: "POST",
-                url: 'cms_backend.php?action=facchangepass',
-                data: formdata,
-                processData: false,
-                contentType: false,
-                success: function(response) {
-                    console.log(response);
-                    var res = jQuery.parseJSON(response);
-                    if (res.status == 200) {
-                        $('#passmodal').modal('hide');
-                        swal("Done!", "Password Changed!", "success");
-                    } else {
-                        alert('error');
-                    }
-                }
-            })
         });
 
         $(document).ready(function() {

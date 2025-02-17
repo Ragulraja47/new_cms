@@ -974,6 +974,8 @@ $result11 = mysqli_query($db, $sql11);
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form id="addnewuser" enctype="multipart/form-data" onsubmit="handleSubmit(event)">
+                    <input type="text" name="faculty_id" value="<?php echo 
+                    $faculty_id; ?>" hidden>
                     <div class="modal-body">
                         <div class="mb-3">
                             <label for="block" class="form-label">Block <span style="color: red;">*</span></label>
@@ -1017,6 +1019,10 @@ $result11 = mysqli_query($db, $sql11);
                                 placeholder="Enter Description" required>
                         </div>
                         <div class="mb-3">
+                            <label for="itemno" class="form-label">Item No <span style="color: red;">If available</span></label>
+                            <input type="text" class="form-control" name="itemno" placeholder="Eg:AC-01" >
+                        </div>
+                        <div class="mb-3">
                             <label for="images" class="form-label">Image <span style="color: red;">*</span></label>
                             <input type="file" class="form-control" name="images" id="images"
                                 onchange="validateSize(this)" required>
@@ -1024,6 +1030,7 @@ $result11 = mysqli_query($db, $sql11);
                         <div class="mb-3">
                             <input type="hidden" class="form-control" name="date_of_reg" id="date_of_reg">
                         </div>
+
                     </div>
                     <input type="hidden" name="status" value="2">
                     <div class="modal-footer">
@@ -1322,10 +1329,24 @@ $result11 = mysqli_query($db, $sql11);
             ext = ext[ext.length - 1].toLowerCase();
             var arrayExtensions = ["jpg", "jpeg", "png"];
             if (arrayExtensions.lastIndexOf(ext) == -1) {
-                swal("Invalid Image Format, Only .jpeg, .jpg, .png format allowed", "", "error");
+                // swal("Invalid Image Format, Only .jpeg, .jpg, .png format allowed", "", "error");
+                swal({
+                    title: "Error",
+                    text: "Invalid Image Format, Only .jpeg, .jpg, .png format allowed",
+                    icon: "error",
+                    button: "Ok",
+                    timer: null
+                });
                 $(input).val('');
             } else if (filesize > 2048) {
-                swal("File is too large, Maximum 2 MB is allowed", "", "error");
+                // swal("File is too large, Maximum 2 MB is allowed", "", "error");
+                swal({
+                    title: "Error",
+                    text: "File is too large, Maximum 2 MB is allowed",
+                    icon: "error",
+                    button: "Ok",
+                    timer: null
+                });
                 $(input).val('');
             }
         }
@@ -1381,7 +1402,13 @@ $result11 = mysqli_query($db, $sql11);
                 success: function(response) {
                     var res = typeof response === 'string' ? JSON.parse(response) : response;
                     if (res.status === 200) {
-                        swal("Complaint Submitted!", "", "success");
+                        swal({
+                            title: "Success!",
+                            text: "Complaint Submitted!",
+                            icon: "success",
+                            button: "Ok",
+                            timer: null
+                        });
                         $('#raisemodal').modal('hide');
                         $('#addnewuser')[0].reset(); // Reset the form
                         $('#user').DataTable().destroy();
@@ -1778,7 +1805,13 @@ $result11 = mysqli_query($db, $sql11);
                 success: function(response) {
                     var res = jQuery.parseJSON(response);
                     if (res.status === 200) {
-                        swal("Complaint Submitted!", "", "success");
+                        swal({
+                            title: "Success!",
+                            text: "Complaint Submitted!",
+                            icon: "success",
+                            button: "Ok",
+                            timer: null
+                        });
                         $('#cmodal').modal('hide');
                         $('#addnewuser')[0].reset(); // Reset the form
                         $('#navref1').load(location.href + " #navref1");
@@ -1868,7 +1901,13 @@ $result11 = mysqli_query($db, $sql11);
                     console.log(response);
                     var res = jQuery.parseJSON(response);
                     if (res.status == 200) {
-                        swal("Done!", "Feedback Submitted!", "success");
+                        swal({
+                            title: "Success!",
+                            text: "Feedback Submitted!",
+                            icon: "success",
+                            button: "Ok",
+                            timer: null
+                        });
                         $("#add_feedback")[0].reset();
                         $('#feedback_modal').modal('hide');
                         $('.modal-backdrop').remove(); // Remove lingering backdrop
