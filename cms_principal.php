@@ -402,7 +402,6 @@ $result11 = mysqli_query($db, $sql11);
                                                                 <button type="button" class="btn btn-info float-end fac" data-bs-toggle="modal" data-bs-target="#cmodal">Raise Complaint</button>
                                                                 <br><br>
                                                             </h4>
-    </div>
     <br>
     </div>  
 
