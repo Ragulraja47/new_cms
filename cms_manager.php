@@ -577,17 +577,33 @@ if (isset($_POST['fdept'])) {
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php
-                                                $s = 1;
-                                                while ($row = mysqli_fetch_assoc($result1)) {
-                                                ?>
-                                                    <tr <?php if ($row['faculty_id'] == "principal")
-                                                            echo 'style="background-color:#f3f57a"'; ?>>
-                                                        <td class="text-center"><?php echo $s ?></td>
-                                                        <td class="text-center"><?php echo $row['date_of_reg'] ?></td>
-                                                        <td class="text-center"><?php echo $row['dept'] ?> /
-                                                            <?php echo $row['block_venue'] ?>
-                                                        </td>
+                                                    <?php
+                                                    $s = 1;
+                                                    while ($row = mysqli_fetch_assoc($result1)) {
+                                                    ?>
+                                                        <?php
+                                                        if ($row['faculty_id'] == "principal") {
+
+
+                                                        ?>
+                                                            <tr style="background-color:#f3f57a ">
+                                                            <?php
+                                                        }
+                                                            ?>
+                                                            <?php
+                                                            if ($row['faculty_id'] != "principal") {
+
+
+                                                            ?>
+                                                            <tr>
+                                                            <?php
+                                                            }
+                                                            ?>
+                                                            <td class="text-center"><?php echo $s ?></td>
+                                                            <td class="text-center"><?php echo $row['date_of_reg'] ?></td>
+                                                            <td class="text-center"><?php echo $row['dept'] ?> /
+                                                                <?php echo $row['block_venue'] ?></td>
+
                                                         <td class="text-center">
                                                             <button type="button" value="<?php echo $row['id']; ?>"
                                                                 class="btn btn-sm viewcomplaint"
@@ -607,7 +623,7 @@ if (isset($_POST['fdept'])) {
                                                             <?php if ($row['status'] == 9) { ?>
                                                                 <div class="dropdown">
                                                                     <button type="button"
-                                                                        class="btn btn-warning dropdown-toggle reassign"
+                                                                        class="btn btn-warning  reassign"
                                                                         id="reassignbutton" value="<?php echo $row['id']; ?>"
                                                                         data-bs-toggle="dropdown">
                                                                         Reassign
@@ -862,12 +878,24 @@ if (isset($_POST['fdept'])) {
                                                         </button>
                                                     </td>
                                                     <td class="text-center">
-                                                        <button
-                                                            class="btn <?php echo ($row3['extend_date'] != 0 || $row3['status'] == '11' || $current_date >= $deadline) ? '' : 'btn-primary deadline_extend'; ?>"
-                                                            value="<?php echo $row3["id"]; ?>" data-bs-toggle="modal"
-                                                            data-bs-target="#extend_date">
-                                                            <?php echo $row3['days_to_complete']; ?>
-                                                        </button>
+                                                    <?php
+                                                                if ($row3['extend_date'] != 0 || $row3['status'] == '11' || $current_date >= $deadline) {
+                                                                ?>
+                                                                    <button class="btn">
+
+                                                                        <?php echo $row3['days_to_complete'] ?></button>
+                                                                <?php
+                                                                } else {
+                                                                ?>
+                                                                    <button
+                                                                        class="btn btn-primary deadline_extend"
+                                                                        value="<?php echo $row3["id"]; ?>" data-bs-toggle="modal"
+                                                                        data-bs-target="#extend_date">
+
+                                                                        <?php echo $row3['days_to_complete'] ?></button>
+                                                                <?php
+                                                                }
+                                                                ?>
                                                     </td>
                                                     <td class="text-center">
                                                         <button type="button" class="btn btn-light btn-sm showImage"
