@@ -55,7 +55,7 @@ $row_count11 = mysqli_num_rows($result11);
     <meta name="description" content="">
     <meta name="author" content="">
     <title>MIC</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="../image/mkce_s.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="image/icons/mkce_s.png">
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="cms_style.css">

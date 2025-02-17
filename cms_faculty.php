@@ -113,7 +113,7 @@ if (isset($_POST['facdet'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/icons/mkce_s.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="image/icons/mkce_s.png">
     <title>MIC</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="tabs.css">
@@ -1532,7 +1532,7 @@ if (isset($_POST['facdet'])) {
         stars.forEach((star, index) => {
             star.addEventListener("click", () => {
                 // Remove the "highlighted" class from all stars hidhlited is used in Style
-                stars.forEach(s =       > s.classList.remove("highlighted"));
+                stars.forEach(s => s.classList.remove("highlighted"));
 
                 // Add the "highlighted" class to all stars up to the clicked one
                 for (let i = 0; i <= index; i++) {
