@@ -1322,10 +1322,24 @@ $result11 = mysqli_query($db, $sql11);
             ext = ext[ext.length - 1].toLowerCase();
             var arrayExtensions = ["jpg", "jpeg", "png"];
             if (arrayExtensions.lastIndexOf(ext) == -1) {
-                swal("Invalid Image Format, Only .jpeg, .jpg, .png format allowed", "", "error");
+                // swal("Invalid Image Format, Only .jpeg, .jpg, .png format allowed", "", "error");
+                swal({
+                    title: "Error",
+                    text: "Invalid Image Format, Only .jpeg, .jpg, .png format allowed",
+                    icon: "error",
+                    button: "Ok",
+                    timer: null
+                });
                 $(input).val('');
             } else if (filesize > 2048) {
-                swal("File is too large, Maximum 2 MB is allowed", "", "error");
+                // swal("File is too large, Maximum 2 MB is allowed", "", "error");
+                swal({
+                    title: "Error",
+                    text: "File is too large, Maximum 2 MB is allowed",
+                    icon: "error",
+                    button: "Ok",
+                    timer: null
+                });
                 $(input).val('');
             }
         }
@@ -1381,7 +1395,13 @@ $result11 = mysqli_query($db, $sql11);
                 success: function(response) {
                     var res = typeof response === 'string' ? JSON.parse(response) : response;
                     if (res.status === 200) {
-                        swal("Complaint Submitted!", "", "success");
+                        swal({
+                            title: "Success!",
+                            text: "Complaint Submitted!",
+                            icon: "success",
+                            button: "Ok",
+                            timer: null
+                        });
                         $('#raisemodal').modal('hide');
                         $('#addnewuser')[0].reset(); // Reset the form
                         $('#user').DataTable().destroy();
@@ -1778,7 +1798,13 @@ $result11 = mysqli_query($db, $sql11);
                 success: function(response) {
                     var res = jQuery.parseJSON(response);
                     if (res.status === 200) {
-                        swal("Complaint Submitted!", "", "success");
+                        swal({
+                            title: "Success!",
+                            text: "Complaint Submitted!",
+                            icon: "success",
+                            button: "Ok",
+                            timer: null
+                        });
                         $('#cmodal').modal('hide');
                         $('#addnewuser')[0].reset(); // Reset the form
                         $('#navref1').load(location.href + " #navref1");
@@ -1868,7 +1894,13 @@ $result11 = mysqli_query($db, $sql11);
                     console.log(response);
                     var res = jQuery.parseJSON(response);
                     if (res.status == 200) {
-                        swal("Done!", "Feedback Submitted!", "success");
+                        swal({
+                            title: "Success!",
+                            text: "Feedback Submitted!",
+                            icon: "success",
+                            button: "Ok",
+                            timer: null
+                        });
                         $("#add_feedback")[0].reset();
                         $('#feedback_modal').modal('hide');
                         $('.modal-backdrop').remove(); // Remove lingering backdrop

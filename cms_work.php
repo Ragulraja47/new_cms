@@ -734,7 +734,8 @@ $result4 = mysqli_query($db, $sql4);
                             title: "Accepted!",
                             text: "Work is Accepted",
                             icon: "success"
-                        });                        $('#new_task_table').DataTable().destroy();
+                        });                        
+                        $('#new_task_table').DataTable().destroy();
                         $("#new_task_table").load(location.href + " #new_task_table > *",
                             function() {
                                 $('#new_task_table').DataTable();
