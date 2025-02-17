@@ -1509,18 +1509,31 @@ $row_count11 = mysqli_num_rows($result11);
                         if (res.status == 200) {
                             $('#rejectmodal').modal('hide');
                             $('#rejectdetails')[0].reset();
-                            $('#myTable1').load(location.href + " #myTable1");
-                            $('#myTable4').load(location.href + " #myTable4");
                             $('#myTable1').DataTable().destroy();
-                            $('#myTable4').DataTable().destroy();
-                            $("#myTable1").load(location.href + " #myTable1 > *", function() {
-                                $('#myTable1').DataTable();
-                            });
-                            $("#myTable4").load(location.href + " #myTable4 > *", function() {
-                                $('#myTable4').DataTable();
-                            });
-                            $('#navref1').load(location.href + " #navref1");
-                            $('#navref4').load(location.href + " #navref4");
+                        $('#myTable2').DataTable().destroy();
+                        $('#myTable3').DataTable().destroy();
+                        $('#myTable4').DataTable().destroy();
+                        $('#feedbackTable').DataTable().destroy();
+                        $("#myTable1").load(location.href + " #myTable1 > *", function() {
+                            $('#myTable1').DataTable();
+                        });
+                        $("#myTable2").load(location.href + " #myTable2 > *", function() {
+                            $('#myTable2').DataTable();
+                        });
+                        $("#myTable3").load(location.href + " #myTable3 > *", function() {
+                            $('#myTable3').DataTable();
+                        });
+                        $("#myTable4").load(location.href + " #myTable3 > *", function() {
+                            $('#myTable3').DataTable();
+                        });
+                        $("#feedbackTable").load(location.href + " #feedbackTable > *", function() {
+                            $('#feedbackTable').DataTable();
+                        });
+                        $('#navref1').load(location.href + " #navref1");
+                        $('#navref2').load(location.href + " #navref2");
+                        $('#navref3').load(location.href + " #navref3");
+                        $('#navref33').load(location.href + " #navref3");
+                        $('#navref4').load(location.href + " #navref4");
 
                         } else if (res.status == 500) {
                             alertify.error('Complaint Rejected!');
@@ -1594,6 +1607,8 @@ $row_count11 = mysqli_num_rows($result11);
                         $('#myTable1').DataTable().destroy();
                         $('#myTable2').DataTable().destroy();
                         $('#myTable3').DataTable().destroy();
+                        $('#myTable4').DataTable().destroy();
+                        $('#feedbackTable').DataTable().destroy();
                         $("#myTable1").load(location.href + " #myTable1 > *", function() {
                             $('#myTable1').DataTable();
                         });
@@ -1603,9 +1618,16 @@ $row_count11 = mysqli_num_rows($result11);
                         $("#myTable3").load(location.href + " #myTable3 > *", function() {
                             $('#myTable3').DataTable();
                         });
+                        $("#myTable4").load(location.href + " #myTable3 > *", function() {
+                            $('#myTable3').DataTable();
+                        });
+                        $("#feedbackTable").load(location.href + " #feedbackTable > *", function() {
+                            $('#feedbackTable').DataTable();
+                        });
                         $('#navref1').load(location.href + " #navref1");
                         $('#navref2').load(location.href + " #navref2");
                         $('#navref3').load(location.href + " #navref3");
+                        $('#navref33').load(location.href + " #navref3");
                         $('#navref4').load(location.href + " #navref4");
                     }
                 }
@@ -1630,15 +1652,31 @@ $row_count11 = mysqli_num_rows($result11);
                         swal("Complaint Submitted!", "", "success");
                         $('#raisemodal').modal('hide');
                         $('#addnewuser')[0].reset(); // Reset the form
+                        $('#myTable1').DataTable().destroy();
+                        $('#myTable2').DataTable().destroy();
+                        $('#myTable3').DataTable().destroy();
+                        $('#myTable4').DataTable().destroy();
+                        $('#feedbackTable').DataTable().destroy();
+                        $("#myTable1").load(location.href + " #myTable1 > *", function() {
+                            $('#myTable1').DataTable();
+                        });
+                        $("#myTable2").load(location.href + " #myTable2 > *", function() {
+                            $('#myTable2').DataTable();
+                        });
+                        $("#myTable3").load(location.href + " #myTable3 > *", function() {
+                            $('#myTable3').DataTable();
+                        });
+                        $("#myTable4").load(location.href + " #myTable3 > *", function() {
+                            $('#myTable3').DataTable();
+                        });
+                        $("#feedbackTable").load(location.href + " #feedbackTable > *", function() {
+                            $('#feedbackTable').DataTable();
+                        });
                         $('#navref1').load(location.href + " #navref1");
                         $('#navref2').load(location.href + " #navref2");
                         $('#navref3').load(location.href + " #navref3");
-                        $('#dashref').load(location.href + " #dashref");
-
-                        $('#user').DataTable().destroy();
-                        $("#user").load(location.href + " #user > *", function() {
-                            $('#user').DataTable();
-                        });
+                        $('#navref33').load(location.href + " #navref3");
+                        $('#navref4').load(location.href + " #navref4");
                     } else {
                         console.error("Error:", res.message);
                         alert("Something went wrong! Try again.");
@@ -1980,43 +2018,31 @@ $row_count11 = mysqli_num_rows($result11);
                         $('.modal-backdrop').remove(); // Remove lingering backdrop
 
 
-                        $('#navref1').load(location.href + " #navref1");
-                        $('#navref2').load(location.href + " #navref2");
-                        $('#navref3').load(location.href + " #navref3");
-                        $('#navref33').load(location.href + " #navref33");
-
-                        $('#navref4').load(location.href + " #navref4");
-                        $('#navref44').load(location.href + " #navref44");
-
-                        $('#dashref').load(location.href + " #dashref");
-
                         $('#myTable1').DataTable().destroy();
+                        $('#myTable2').DataTable().destroy();
+                        $('#myTable3').DataTable().destroy();
+                        $('#myTable4').DataTable().destroy();
+                        $('#feedbackTable').DataTable().destroy();
                         $("#myTable1").load(location.href + " #myTable1 > *", function() {
                             $('#myTable1').DataTable();
                         });
-
-                        $('#feedbackTable').DataTable().destroy();
-                        $("#feedbackTable").load(location.href + " #feedbackTable > *", function() {
-                            $('#feedbackTable').DataTable();
-                        });
-
-                        $('#myTable2').DataTable().destroy();
                         $("#myTable2").load(location.href + " #myTable2 > *", function() {
                             $('#myTable2').DataTable();
                         });
-
-                        $('#myTable3').DataTable().destroy();
                         $("#myTable3").load(location.href + " #myTable3 > *", function() {
                             $('#myTable3').DataTable();
                         });
-                        $('#record_table').DataTable().destroy();
-                        $("#record_table").load(location.href + " #record_table > *", function() {
-                            $('#record_table').DataTable();
+                        $("#myTable4").load(location.href + " #myTable3 > *", function() {
+                            $('#myTable3').DataTable();
                         });
-                        $('#myTable4').DataTable().destroy();
-                        $("#myTable4").load(location.href + " #myTable4 > *", function() {
-                            $('#myTable4').DataTable();
+                        $("#feedbackTable").load(location.href + " #feedbackTable > *", function() {
+                            $('#feedbackTable').DataTable();
                         });
+                        $('#navref1').load(location.href + " #navref1");
+                        $('#navref2').load(location.href + " #navref2");
+                        $('#navref3').load(location.href + " #navref3");
+                        $('#navref33').load(location.href + " #navref3");
+                        $('#navref4').load(location.href + " #navref4");
                     } else {
                         alert(response.message || 'An error occurred while submitting feedback.');
                     }

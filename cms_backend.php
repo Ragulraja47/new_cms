@@ -1609,7 +1609,7 @@ switch ($action) {
         $oname = $_POST['o_name'];
         $wname = $_POST['w_name'];
         $date_of_completion = date('Y-m-d H:i:s');
-        $amt = $_POST['amt'];
+        $amt = $_POST['amount'];
         $name = current(array_filter([$oname, $wname]));
         $insertQuery = "UPDATE manager SET worker_id='$name' WHERE task_id='$taskId'";
         if (mysqli_query($db, $insertQuery)) {

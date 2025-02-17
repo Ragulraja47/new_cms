@@ -1110,6 +1110,10 @@ $notcount = mysqli_num_rows($result4);
                                         <label class="form-label">Add Image-Proof</label>
                                         <input onchange="validateSize(this)" class="form-control" type="file" id="imgafter" name="after_photo">
                                     </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Amount (If-applicable)</label>
+                                        <input class="form-control" type="text" id="amt" name="amount">
+                                    </div>
                                     <label class="form-label">Task Completion</label><br>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="completionStatus" id="inlineRadio1" value="Fully Completed">
