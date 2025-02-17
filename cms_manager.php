@@ -2794,7 +2794,6 @@ if (isset($_POST['fdept'])) {
         $(document).on('click','.activate_user',function(e){
             e.preventDefault();
             var id = $(this).val();
-            alert(id);
 
             $.ajax({
                 type:"POST",
@@ -2807,7 +2806,16 @@ if (isset($_POST['fdept'])) {
                     var res = jQuery.parseJSON(response);
 
                     if(res.status == 200){
-                        alert("User Activated");
+                        alertify.set('notifier', 'position', 'top-right');
+                        alertify.success('Activated');
+
+                        $('#activate_table').DataTable().destroy();
+
+                        $("#activate_table").load(location.href + " #activate_table > *",
+                            function() {
+                                // Reinitialize the DataTable after the content is loaded
+                                $('#activate_table').DataTable();
+                            });
                     }
                 }
             });
