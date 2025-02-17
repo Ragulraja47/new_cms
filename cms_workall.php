@@ -173,6 +173,8 @@ $notcount = mysqli_num_rows($result4);
     <title>MIC</title>
     <link rel="icon" type="image/png" sizes="32x32" href="image/icons/mkce_s.png">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="tabs.css">
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css" rel="stylesheet">
@@ -477,21 +479,21 @@ $notcount = mysqli_num_rows($result4);
                         </a>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link" data-bs-toggle="tab" id="edit-bus-tab" href="#waiting" role="tab"
+                        <a class="nav-link" data-bs-toggle="tab" id="delete-bus-tab" href="#waiting" role="tab"
                             aria-selected="true">
                             <span class="hidden-xs-down" id="ref5" style="font-size: 0.9em;"><i
                                     class="fas fa-book tab-icon"></i>Waiting for approval (<?php echo $waitcount ?>)</span>
                         </a>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link" data-bs-toggle="tab" id="edit-bus-tab" href="#not_approved" role="tab"
+                        <a class="nav-link" data-bs-toggle="tab" id="route-bus-tab" href="#not_approved" role="tab"
                             aria-selected="true">
                             <span class="hidden-xs-down" ref="ref3" style="font-size: 0.9em;"><i
                                     class="fas fa-book tab-icon"></i>Not approved (<?php echo $notcount ?>)</span>
                         </a>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link" data-bs-toggle="tab" id="edit-bus-tab" href="#completed" role="tab"
+                        <a class="nav-link" data-bs-toggle="tab" id="settings-bus-tab" href="#completed" role="tab"
                             aria-selected="true">
                             <span class="hidden-xs-down" id="ref1" style="font-size: 0.9em;"><i
                                     class="fas fa-book tab-icon"></i>Completed (<?php echo $compcount ?>)</span>
