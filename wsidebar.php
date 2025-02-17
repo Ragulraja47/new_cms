@@ -190,6 +190,10 @@ display: inline-block;
     </div>
 
     <div class="menu">
+    <a href="cms_windex.php" class="menu-item">
+            <i class="fas fa-bus icon-bus"></i>
+            <span>Dashboard</span>
+        </a>
     
         <a href="cms_work.php" class="menu-item">
             <i class="fas fa-bus icon-bus"></i>
