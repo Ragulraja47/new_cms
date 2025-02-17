@@ -98,7 +98,8 @@ if (isset($_POST['fdept'])) {
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/alertify.min.css" />
     <!-- Bootstrap theme alertify-->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/themes/bootstrap.min.css" />
-    <link href="css/dboardstyles.css" rel="stylesheet">
+    <link rel="stylesheet" href="dboardstyles.css">
+
     <style>
         :root {
             --sidebar-width: 250px;
@@ -1200,6 +1201,12 @@ if (isset($_POST['fdept'])) {
                                     Worker's Records
                                 </a>
                             </li>
+                            <li class="nav-item "> <!-- Add margin between tabs -->
+                                <a class="nav-link" id="add-bus-tab" data-bs-toggle="tab" style="font-size: 0.9em;"
+                                    href="#manageworker" role="tab" aria-selected="false">
+                                    Worker's Records
+                                </a>
+                            </li>
                         </ul>
                         <div class="tab-content">
 
@@ -1289,6 +1296,60 @@ if (isset($_POST['fdept'])) {
 
                             </div>
 
+
+                            <!--Manager workers-->
+                            <div class="tab-pane p-20" id="manageworker" role="tabpanel">
+                                <h5 class="card-title">Worker's Record</h5><br>
+
+
+                                <button id="" class="btn btn-info float-end" data-bs-toggle="modal" data-bs-target="#addworker">
+                                    <i class="bi bi-person-plus"></i> Add Worker</button>
+                                <br><br>
+
+                                <div class="table-responsive">
+                                    <table id="worker_display" class="table table-striped table-bordered">
+                                        <thead class="gradient-header">
+                                            <tr class="text-center">
+                                                <th>S.No</th>
+                                                <th>Name</th>
+                                                <th>Department</th>
+                                                <th>Role</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                    
+                                        <tbody>
+                                            <?php
+                                            $s = 1;
+                                            while ($row = mysqli_fetch_assoc($result11)) {
+                                            ?>
+                                                <tr>
+                                                    <td class="text-center"><?php echo $s ?></td>
+                                                    <td class="text-center">
+                                                        <?php echo $row['worker_first_name'] ?></td>
+                                                    <td class="text-center">
+                                                        <?php echo $row['worker_dept'] ?></td>
+
+                                                    <td class="text-center">
+                                                        <?php echo $row['usertype'] ?></td>
+
+                                                    <td class="text-center"><button type="button"
+                                                            class="btn btn-danger deleteworker"
+                                                            value="<?php echo $row["id"] ?>">Delete</button>
+                                                    </td>
+                                                </tr>
+                                            <?php
+                                                $s++;
+                                            }
+                                            ?>
+                                        </tbody>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+
                         </div>
                     </div>
 
@@ -1302,70 +1363,6 @@ if (isset($_POST['fdept'])) {
 
 
     <!--All Modals -->
-
-    <!-- Manage Workers Modal -->
-    <div class="modal fade" id="manageworkermodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addworker">
-                        <i class="bi bi-person-plus"></i> Add Worker
-                    </button>
-
-                    <div class="table-responsive">
-                        <table id="worker_display" class="table table-striped table-bordered">
-                            <thead class="table-primary">
-                                <tr class="text-center">
-                                    <th>S.No</th>
-                                    <th>Name</th>
-                                    <th>Department</th>
-                                    <th>Role</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            <tbody>
-                                <?php
-                                $s = 1;
-                                while ($row = mysqli_fetch_assoc($result11)) {
-                                ?>
-                                    <tr>
-                                        <td class="text-center"><?php echo $s ?></td>
-                                        <td class="text-center">
-                                            <?php echo $row['worker_first_name'] ?></td>
-                                        <td class="text-center">
-                                            <?php echo $row['worker_dept'] ?></td>
-
-                                        <td class="text-center">
-                                            <?php echo $row['usertype'] ?></td>
-
-                                        <td class="text-center"><button type="button"
-                                                class="btn btn-danger deleteworker"
-                                                value="<?php echo $row["id"] ?>">Delete</button>
-                                        </td>
-                                    </tr>
-                                <?php
-                                    $s++;
-                                }
-                                ?>
-                            </tbody>
-
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <!-- Modal Footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Add Worker Modal -->
     <div class="modal fade" id="addworker" tabindex="-1" aria-labelledby="addworkerLabel"
@@ -1974,12 +1971,7 @@ if (isset($_POST['fdept'])) {
             $("#Rworkers").DataTable();
         });
         $(document).ready(function() {
-            $("#user_display").DataTable();
-        });
-        $(document).ready(function() {
-            $("#worker_display").DataTable({
-                pageLength: 5,
-            });
+            $("#worker_display").DataTable();
         });
     </script>
     <script>
@@ -2717,9 +2709,7 @@ if (isset($_POST['fdept'])) {
                         $('#worker_display').DataTable().destroy();
                         $("#worker_display").load(location.href + " #worker_display > *",
                             function() {
-                                $('#worker_display').DataTable({
-                                    pageLength: 5
-                                });
+                                $('#worker_display').DataTable();
                             });
 
 
@@ -2921,9 +2911,7 @@ if (isset($_POST['fdept'])) {
                         $('#worker_display').DataTable().destroy();
                         $("#worker_display").load(location.href + " #worker_display > *",
                             function() {
-                                $('#worker_display').DataTable({
-                                    pageLength: 5
-                                });
+                                $('#worker_display').DataTable();
                             });
 
                     }
