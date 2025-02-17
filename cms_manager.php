@@ -49,7 +49,11 @@ $result7 = mysqli_query($db, $sql7);
 $row_count7 = mysqli_num_rows($result7);
 
 //display all users
-$sql10 = "SELECT * FROM complaints_detail";
+$sql10 = "SELECT cd.faculty_id, cd.id as cid, f.*
+FROM complaints_detail cd JOIN
+faculty f ON cd.faculty_id = f.id
+WHERE nofeed >= 1
+GROUP BY cd.faculty_id";
 $result10 = mysqli_query($db, $sql10);
 
 //display all workers
@@ -1205,7 +1209,7 @@ if (isset($_POST['fdept'])) {
                             <li class="nav-item  " style="margin-right: 10px;"> <!-- Add margin between tabs -->
                                 <a class="nav-link" id="add-bus-tab" data-bs-toggle="tab" style="font-size: 0.9em;"
                                     href="#manageworker" role="tab" aria-selected="false">
-                                    Worker's Records
+                                    Manage Worker's
                                 </a>
                             </li>
 
@@ -1304,7 +1308,7 @@ if (isset($_POST['fdept'])) {
 
                             <!--Manager workers-->
                             <div class="tab-pane p-20" id="manageworker" role="tabpanel">
-                                <h5 class="card-title">Worker's Record</h5><br>
+                                <h5 class="card-title">Manage Worker</h5><br>
 
 
                                 <button id="" class="btn btn-info float-end" data-bs-toggle="modal" data-bs-target="#addworker">
@@ -1366,10 +1370,13 @@ if (isset($_POST['fdept'])) {
                                                             <h5>S.No</h5>
                                                         </b></th>
                                                     <th class="col-md-2 text-center"><b>
-                                                            <h5>Faculty Name</h5>
+                                                            <h5>Complaint ID</h5>
                                                         </b></th>
                                                     <th class="text-center"><b>
                                                             <h5>Faculty Id</h5>
+                                                        </b></th>
+                                                    <th class="text-center"><b>
+                                                            <h5>Faculty Name</h5>
                                                         </b></th>
                                                     <th class="text-center"><b>
                                                             <h5>Department</h5>
@@ -1380,6 +1387,29 @@ if (isset($_POST['fdept'])) {
                                                 </tr>
                                             </thead>
                                             <tbody>
+
+                                            <?php
+                                            $s = 1;
+                                            while ($row = mysqli_fetch_assoc($result10)) {
+                                            ?>
+
+                                            <tr>
+                                            <td class="text-center"><?php echo $s ?></td>
+                                            <td class="text-center"><?php echo $row['cid']; ?></td>
+                                            <td class="text-center"><?php echo $row['faculty_id']; ?></td>
+                                            <td class="text-center"><?php echo $row['name']; ?></td>
+                                            <td class="text-center"><?php echo $row['dept']; ?></td>
+                                            <td class="text-center">
+                                            <button type="button"
+                                                            class="btn btn-success activate_user"
+                                                            value="<?php echo $row["id"] ?>">Activate</button>
+                                            </td>
+                                            </tr>
+
+                                            <?php
+                                                $s++;
+                                            }
+                                            ?>
 
                                             </tbody>
                                         </table>
@@ -2757,6 +2787,28 @@ if (isset($_POST['fdept'])) {
                 },
                 error: function(xhr, status, error) {
                     alert("An error occurred: " + error);
+                }
+            });
+        })
+
+        $(document).on('click','.activate_user',function(e){
+            e.preventDefault();
+            var id = $(this).val();
+            alert(id);
+
+            $.ajax({
+                type:"POST",
+                url:'cms_backend.php?action=activate_user',
+                data:{
+                    'id':id,
+                },
+                success: function(response) {
+                    console.log(response);
+                    var res = jQuery.parseJSON(response);
+
+                    if(res.status == 200){
+                        alert("User Activated");
+                    }
                 }
             });
         })

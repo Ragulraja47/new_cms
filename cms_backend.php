@@ -425,12 +425,12 @@ switch ($action) {
         break;
 
         //delete users
-    case 'delete_user':
+    case 'activate_user':
         $id = $_POST['id'];
-
-        $query = "DELETE FROM faculty_details WHERE id = ?";
+        $value=0;
+        $query = "UPDATE complaints_detail SET nofeed = ?  WHERE faculty_id = ?";
         $stmt = mysqli_prepare($db, $query);
-        mysqli_stmt_bind_param($stmt, "s", $id);
+        mysqli_stmt_bind_param($stmt, "ii",$valu,$id);
         $query_obj = mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
 
